@@ -46,33 +46,33 @@ var Clustergrammer =
 /***/ (function(module, exports, __webpack_require__) {
 
 	var make_config = __webpack_require__(1);
-	var make_params = __webpack_require__(10);
-	var make_viz = __webpack_require__(89);
-	var resize_viz = __webpack_require__(154);
-	var play_demo = __webpack_require__(197);
-	var ini_demo = __webpack_require__(237);
-	var filter_viz_using_nodes = __webpack_require__(240);
-	var filter_viz_using_names = __webpack_require__(241);
-	var update_cats = __webpack_require__(242);
-	var reset_cats = __webpack_require__(243);
-	var two_translate_zoom = __webpack_require__(146);
-	var update_view = __webpack_require__(245);
-	var save_matrix = __webpack_require__(248);
-	var brush_crop_matrix = __webpack_require__(252);
-	var run_zoom = __webpack_require__(155);
-	var d3_tip_custom = __webpack_require__(100);
-	var all_reorder = __webpack_require__(145);
-	var make_matrix_string = __webpack_require__(250);
+	var make_params = __webpack_require__(11);
+	var make_viz = __webpack_require__(90);
+	var resize_viz = __webpack_require__(155);
+	var play_demo = __webpack_require__(198);
+	var ini_demo = __webpack_require__(238);
+	var filter_viz_using_nodes = __webpack_require__(241);
+	var filter_viz_using_names = __webpack_require__(242);
+	var update_cats = __webpack_require__(243);
+	var reset_cats = __webpack_require__(244);
+	var two_translate_zoom = __webpack_require__(147);
+	var update_view = __webpack_require__(246);
+	var save_matrix = __webpack_require__(249);
+	var brush_crop_matrix = __webpack_require__(253);
+	var run_zoom = __webpack_require__(156);
+	var d3_tip_custom = __webpack_require__(101);
+	var all_reorder = __webpack_require__(146);
+	var make_matrix_string = __webpack_require__(251);
 
 	// moved d3.slider to src
-	d3.slider = __webpack_require__(254);
+	d3.slider = __webpack_require__(255);
 
 	/* eslint-disable */
 
-	var awesomplete = __webpack_require__(256);
+	var awesomplete = __webpack_require__(257);
 	// getting css from src
-	__webpack_require__(257);
-	__webpack_require__(261);
+	__webpack_require__(258);
+	__webpack_require__(262);
 
 	/* clustergrammer v1.19.5
 	 * Nicolas Fernandez, Ma'ayan Lab, Icahn School of Medicine at Mount Sinai
@@ -104,7 +104,7 @@ var Clustergrammer =
 	  cgm.params.zoom_behavior.translate([cgm.params.viz.clust.margin.left, cgm.params.viz.clust.margin.top]);
 
 	  if (cgm.params.use_sidebar) {
-	    var make_sidebar = __webpack_require__(263);
+	    var make_sidebar = __webpack_require__(264);
 	    make_sidebar(cgm);
 	  }
 
@@ -185,12 +185,12 @@ var Clustergrammer =
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var transpose_network = __webpack_require__(4);
-	var get_available_filters = __webpack_require__(5);
-	var get_filter_default_state = __webpack_require__(6);
-	var set_defaults = __webpack_require__(7);
-	var check_sim_mat = __webpack_require__(8);
-	var check_nodes_for_categories = __webpack_require__(9);
+	var transpose_network = __webpack_require__(5);
+	var get_available_filters = __webpack_require__(6);
+	var get_filter_default_state = __webpack_require__(7);
+	var set_defaults = __webpack_require__(8);
+	var check_sim_mat = __webpack_require__(9);
+	var check_nodes_for_categories = __webpack_require__(10);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_config(args) {
@@ -445,9 +445,9 @@ var Clustergrammer =
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {//     Underscore.js 1.9.1
 	//     http://underscorejs.org
-	//     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	//     (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	//     Underscore may be freely distributed under the MIT license.
 
 	(function() {
@@ -455,29 +455,32 @@ var Clustergrammer =
 	  // Baseline setup
 	  // --------------
 
-	  // Establish the root object, `window` in the browser, or `exports` on the server.
-	  var root = this;
+	  // Establish the root object, `window` (`self`) in the browser, `global`
+	  // on the server, or `this` in some virtual machines. We use `self`
+	  // instead of `window` for `WebWorker` support.
+	  var root = typeof self == 'object' && self.self === self && self ||
+	            typeof global == 'object' && global.global === global && global ||
+	            this ||
+	            {};
 
 	  // Save the previous value of the `_` variable.
 	  var previousUnderscore = root._;
 
 	  // Save bytes in the minified (but not gzipped) version:
-	  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+	  var ArrayProto = Array.prototype, ObjProto = Object.prototype;
+	  var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
 
 	  // Create quick reference variables for speed access to core prototypes.
-	  var
-	    push             = ArrayProto.push,
-	    slice            = ArrayProto.slice,
-	    toString         = ObjProto.toString,
-	    hasOwnProperty   = ObjProto.hasOwnProperty;
+	  var push = ArrayProto.push,
+	      slice = ArrayProto.slice,
+	      toString = ObjProto.toString,
+	      hasOwnProperty = ObjProto.hasOwnProperty;
 
 	  // All **ECMAScript 5** native function implementations that we hope to use
 	  // are declared here.
-	  var
-	    nativeIsArray      = Array.isArray,
-	    nativeKeys         = Object.keys,
-	    nativeBind         = FuncProto.bind,
-	    nativeCreate       = Object.create;
+	  var nativeIsArray = Array.isArray,
+	      nativeKeys = Object.keys,
+	      nativeCreate = Object.create;
 
 	  // Naked function reference for surrogate-prototype-swapping.
 	  var Ctor = function(){};
@@ -490,10 +493,12 @@ var Clustergrammer =
 	  };
 
 	  // Export the Underscore object for **Node.js**, with
-	  // backwards-compatibility for the old `require()` API. If we're in
+	  // backwards-compatibility for their old module API. If we're in
 	  // the browser, add `_` as a global object.
-	  if (true) {
-	    if (typeof module !== 'undefined' && module.exports) {
+	  // (`nodeType` is checked to ensure that `module`
+	  // and `exports` are not HTML elements.)
+	  if (typeof exports != 'undefined' && !exports.nodeType) {
+	    if (typeof module != 'undefined' && !module.nodeType && module.exports) {
 	      exports = module.exports = _;
 	    }
 	    exports._ = _;
@@ -502,7 +507,7 @@ var Clustergrammer =
 	  }
 
 	  // Current version.
-	  _.VERSION = '1.8.3';
+	  _.VERSION = '1.9.1';
 
 	  // Internal function that returns an efficient (for current engines) version
 	  // of the passed-in callback, to be repeatedly applied in other Underscore
@@ -513,9 +518,7 @@ var Clustergrammer =
 	      case 1: return function(value) {
 	        return func.call(context, value);
 	      };
-	      case 2: return function(value, other) {
-	        return func.call(context, value, other);
-	      };
+	      // The 2-argument case is omitted because we’re not using it.
 	      case 3: return function(value, index, collection) {
 	        return func.call(context, value, index, collection);
 	      };
@@ -528,34 +531,51 @@ var Clustergrammer =
 	    };
 	  };
 
-	  // A mostly-internal function to generate callbacks that can be applied
-	  // to each element in a collection, returning the desired result — either
-	  // identity, an arbitrary callback, a property matcher, or a property accessor.
+	  var builtinIteratee;
+
+	  // An internal function to generate callbacks that can be applied to each
+	  // element in a collection, returning the desired result — either `identity`,
+	  // an arbitrary callback, a property matcher, or a property accessor.
 	  var cb = function(value, context, argCount) {
+	    if (_.iteratee !== builtinIteratee) return _.iteratee(value, context);
 	    if (value == null) return _.identity;
 	    if (_.isFunction(value)) return optimizeCb(value, context, argCount);
-	    if (_.isObject(value)) return _.matcher(value);
+	    if (_.isObject(value) && !_.isArray(value)) return _.matcher(value);
 	    return _.property(value);
 	  };
-	  _.iteratee = function(value, context) {
+
+	  // External wrapper for our callback generator. Users may customize
+	  // `_.iteratee` if they want additional predicate/iteratee shorthand styles.
+	  // This abstraction hides the internal-only argCount argument.
+	  _.iteratee = builtinIteratee = function(value, context) {
 	    return cb(value, context, Infinity);
 	  };
 
-	  // An internal function for creating assigner functions.
-	  var createAssigner = function(keysFunc, undefinedOnly) {
-	    return function(obj) {
-	      var length = arguments.length;
-	      if (length < 2 || obj == null) return obj;
-	      for (var index = 1; index < length; index++) {
-	        var source = arguments[index],
-	            keys = keysFunc(source),
-	            l = keys.length;
-	        for (var i = 0; i < l; i++) {
-	          var key = keys[i];
-	          if (!undefinedOnly || obj[key] === void 0) obj[key] = source[key];
-	        }
+	  // Some functions take a variable number of arguments, or a few expected
+	  // arguments at the beginning and then a variable number of values to operate
+	  // on. This helper accumulates all remaining arguments past the function’s
+	  // argument length (or an explicit `startIndex`), into an array that becomes
+	  // the last argument. Similar to ES6’s "rest parameter".
+	  var restArguments = function(func, startIndex) {
+	    startIndex = startIndex == null ? func.length - 1 : +startIndex;
+	    return function() {
+	      var length = Math.max(arguments.length - startIndex, 0),
+	          rest = Array(length),
+	          index = 0;
+	      for (; index < length; index++) {
+	        rest[index] = arguments[index + startIndex];
 	      }
-	      return obj;
+	      switch (startIndex) {
+	        case 0: return func.call(this, rest);
+	        case 1: return func.call(this, arguments[0], rest);
+	        case 2: return func.call(this, arguments[0], arguments[1], rest);
+	      }
+	      var args = Array(startIndex + 1);
+	      for (index = 0; index < startIndex; index++) {
+	        args[index] = arguments[index];
+	      }
+	      args[startIndex] = rest;
+	      return func.apply(this, args);
 	    };
 	  };
 
@@ -569,18 +589,31 @@ var Clustergrammer =
 	    return result;
 	  };
 
-	  var property = function(key) {
+	  var shallowProperty = function(key) {
 	    return function(obj) {
 	      return obj == null ? void 0 : obj[key];
 	    };
 	  };
 
+	  var has = function(obj, path) {
+	    return obj != null && hasOwnProperty.call(obj, path);
+	  }
+
+	  var deepGet = function(obj, path) {
+	    var length = path.length;
+	    for (var i = 0; i < length; i++) {
+	      if (obj == null) return void 0;
+	      obj = obj[path[i]];
+	    }
+	    return length ? obj : void 0;
+	  };
+
 	  // Helper for collection methods to determine whether a collection
-	  // should be iterated as an array or as an object
+	  // should be iterated as an array or as an object.
 	  // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
 	  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
 	  var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
-	  var getLength = property('length');
+	  var getLength = shallowProperty('length');
 	  var isArrayLike = function(collection) {
 	    var length = getLength(collection);
 	    return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
@@ -622,30 +655,29 @@ var Clustergrammer =
 	  };
 
 	  // Create a reducing function iterating left or right.
-	  function createReduce(dir) {
-	    // Optimized iterator function as using arguments.length
-	    // in the main function will deoptimize the, see #1991.
-	    function iterator(obj, iteratee, memo, keys, index, length) {
+	  var createReduce = function(dir) {
+	    // Wrap code that reassigns argument variables in a separate function than
+	    // the one that accesses `arguments.length` to avoid a perf hit. (#1991)
+	    var reducer = function(obj, iteratee, memo, initial) {
+	      var keys = !isArrayLike(obj) && _.keys(obj),
+	          length = (keys || obj).length,
+	          index = dir > 0 ? 0 : length - 1;
+	      if (!initial) {
+	        memo = obj[keys ? keys[index] : index];
+	        index += dir;
+	      }
 	      for (; index >= 0 && index < length; index += dir) {
 	        var currentKey = keys ? keys[index] : index;
 	        memo = iteratee(memo, obj[currentKey], currentKey, obj);
 	      }
 	      return memo;
-	    }
+	    };
 
 	    return function(obj, iteratee, memo, context) {
-	      iteratee = optimizeCb(iteratee, context, 4);
-	      var keys = !isArrayLike(obj) && _.keys(obj),
-	          length = (keys || obj).length,
-	          index = dir > 0 ? 0 : length - 1;
-	      // Determine the initial value if none is provided.
-	      if (arguments.length < 3) {
-	        memo = obj[keys ? keys[index] : index];
-	        index += dir;
-	      }
-	      return iterator(obj, iteratee, memo, keys, index, length);
+	      var initial = arguments.length >= 3;
+	      return reducer(obj, optimizeCb(iteratee, context, 4), memo, initial);
 	    };
-	  }
+	  };
 
 	  // **Reduce** builds up a single result from a list of values, aka `inject`,
 	  // or `foldl`.
@@ -656,12 +688,8 @@ var Clustergrammer =
 
 	  // Return the first value which passes a truth test. Aliased as `detect`.
 	  _.find = _.detect = function(obj, predicate, context) {
-	    var key;
-	    if (isArrayLike(obj)) {
-	      key = _.findIndex(obj, predicate, context);
-	    } else {
-	      key = _.findKey(obj, predicate, context);
-	    }
+	    var keyFinder = isArrayLike(obj) ? _.findIndex : _.findKey;
+	    var key = keyFinder(obj, predicate, context);
 	    if (key !== void 0 && key !== -1) return obj[key];
 	  };
 
@@ -716,14 +744,26 @@ var Clustergrammer =
 	  };
 
 	  // Invoke a method (with arguments) on every item in a collection.
-	  _.invoke = function(obj, method) {
-	    var args = slice.call(arguments, 2);
-	    var isFunc = _.isFunction(method);
-	    return _.map(obj, function(value) {
-	      var func = isFunc ? method : value[method];
-	      return func == null ? func : func.apply(value, args);
+	  _.invoke = restArguments(function(obj, path, args) {
+	    var contextPath, func;
+	    if (_.isFunction(path)) {
+	      func = path;
+	    } else if (_.isArray(path)) {
+	      contextPath = path.slice(0, -1);
+	      path = path[path.length - 1];
+	    }
+	    return _.map(obj, function(context) {
+	      var method = func;
+	      if (!method) {
+	        if (contextPath && contextPath.length) {
+	          context = deepGet(context, contextPath);
+	        }
+	        if (context == null) return void 0;
+	        method = context[path];
+	      }
+	      return method == null ? method : method.apply(context, args);
 	    });
-	  };
+	  });
 
 	  // Convenience version of a common use case of `map`: fetching a property.
 	  _.pluck = function(obj, key) {
@@ -746,20 +786,20 @@ var Clustergrammer =
 	  _.max = function(obj, iteratee, context) {
 	    var result = -Infinity, lastComputed = -Infinity,
 	        value, computed;
-	    if (iteratee == null && obj != null) {
+	    if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
 	      obj = isArrayLike(obj) ? obj : _.values(obj);
 	      for (var i = 0, length = obj.length; i < length; i++) {
 	        value = obj[i];
-	        if (value > result) {
+	        if (value != null && value > result) {
 	          result = value;
 	        }
 	      }
 	    } else {
 	      iteratee = cb(iteratee, context);
-	      _.each(obj, function(value, index, list) {
-	        computed = iteratee(value, index, list);
+	      _.each(obj, function(v, index, list) {
+	        computed = iteratee(v, index, list);
 	        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
-	          result = value;
+	          result = v;
 	          lastComputed = computed;
 	        }
 	      });
@@ -771,20 +811,20 @@ var Clustergrammer =
 	  _.min = function(obj, iteratee, context) {
 	    var result = Infinity, lastComputed = Infinity,
 	        value, computed;
-	    if (iteratee == null && obj != null) {
+	    if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
 	      obj = isArrayLike(obj) ? obj : _.values(obj);
 	      for (var i = 0, length = obj.length; i < length; i++) {
 	        value = obj[i];
-	        if (value < result) {
+	        if (value != null && value < result) {
 	          result = value;
 	        }
 	      }
 	    } else {
 	      iteratee = cb(iteratee, context);
-	      _.each(obj, function(value, index, list) {
-	        computed = iteratee(value, index, list);
+	      _.each(obj, function(v, index, list) {
+	        computed = iteratee(v, index, list);
 	        if (computed < lastComputed || computed === Infinity && result === Infinity) {
-	          result = value;
+	          result = v;
 	          lastComputed = computed;
 	        }
 	      });
@@ -792,21 +832,13 @@ var Clustergrammer =
 	    return result;
 	  };
 
-	  // Shuffle a collection, using the modern version of the
-	  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+	  // Shuffle a collection.
 	  _.shuffle = function(obj) {
-	    var set = isArrayLike(obj) ? obj : _.values(obj);
-	    var length = set.length;
-	    var shuffled = Array(length);
-	    for (var index = 0, rand; index < length; index++) {
-	      rand = _.random(0, index);
-	      if (rand !== index) shuffled[index] = shuffled[rand];
-	      shuffled[rand] = set[index];
-	    }
-	    return shuffled;
+	    return _.sample(obj, Infinity);
 	  };
 
-	  // Sample **n** random values from a collection.
+	  // Sample **n** random values from a collection using the modern version of the
+	  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
 	  // If **n** is not specified, returns a single random element.
 	  // The internal `guard` argument allows it to work with `map`.
 	  _.sample = function(obj, n, guard) {
@@ -814,17 +846,28 @@ var Clustergrammer =
 	      if (!isArrayLike(obj)) obj = _.values(obj);
 	      return obj[_.random(obj.length - 1)];
 	    }
-	    return _.shuffle(obj).slice(0, Math.max(0, n));
+	    var sample = isArrayLike(obj) ? _.clone(obj) : _.values(obj);
+	    var length = getLength(sample);
+	    n = Math.max(Math.min(n, length), 0);
+	    var last = length - 1;
+	    for (var index = 0; index < n; index++) {
+	      var rand = _.random(index, last);
+	      var temp = sample[index];
+	      sample[index] = sample[rand];
+	      sample[rand] = temp;
+	    }
+	    return sample.slice(0, n);
 	  };
 
 	  // Sort the object's values by a criterion produced by an iteratee.
 	  _.sortBy = function(obj, iteratee, context) {
+	    var index = 0;
 	    iteratee = cb(iteratee, context);
-	    return _.pluck(_.map(obj, function(value, index, list) {
+	    return _.pluck(_.map(obj, function(value, key, list) {
 	      return {
 	        value: value,
-	        index: index,
-	        criteria: iteratee(value, index, list)
+	        index: index++,
+	        criteria: iteratee(value, key, list)
 	      };
 	    }).sort(function(left, right) {
 	      var a = left.criteria;
@@ -838,9 +881,9 @@ var Clustergrammer =
 	  };
 
 	  // An internal function used for aggregate "group by" operations.
-	  var group = function(behavior) {
+	  var group = function(behavior, partition) {
 	    return function(obj, iteratee, context) {
-	      var result = {};
+	      var result = partition ? [[], []] : {};
 	      iteratee = cb(iteratee, context);
 	      _.each(obj, function(value, index) {
 	        var key = iteratee(value, index, obj);
@@ -853,7 +896,7 @@ var Clustergrammer =
 	  // Groups the object's values by a criterion. Pass either a string attribute
 	  // to group by, or a function that returns the criterion.
 	  _.groupBy = group(function(result, value, key) {
-	    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+	    if (has(result, key)) result[key].push(value); else result[key] = [value];
 	  });
 
 	  // Indexes the object's values by a criterion, similar to `groupBy`, but for
@@ -866,13 +909,18 @@ var Clustergrammer =
 	  // either a string attribute to count by, or a function that returns the
 	  // criterion.
 	  _.countBy = group(function(result, value, key) {
-	    if (_.has(result, key)) result[key]++; else result[key] = 1;
+	    if (has(result, key)) result[key]++; else result[key] = 1;
 	  });
 
+	  var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
 	  // Safely create a real, live array from anything iterable.
 	  _.toArray = function(obj) {
 	    if (!obj) return [];
 	    if (_.isArray(obj)) return slice.call(obj);
+	    if (_.isString(obj)) {
+	      // Keep surrogate pair characters together
+	      return obj.match(reStrSymbol);
+	    }
 	    if (isArrayLike(obj)) return _.map(obj, _.identity);
 	    return _.values(obj);
 	  };
@@ -885,14 +933,9 @@ var Clustergrammer =
 
 	  // Split a collection into two arrays: one whose elements all satisfy the given
 	  // predicate, and one whose elements all do not satisfy the predicate.
-	  _.partition = function(obj, predicate, context) {
-	    predicate = cb(predicate, context);
-	    var pass = [], fail = [];
-	    _.each(obj, function(value, key, obj) {
-	      (predicate(value, key, obj) ? pass : fail).push(value);
-	    });
-	    return [pass, fail];
-	  };
+	  _.partition = group(function(result, value, pass) {
+	    result[pass ? 0 : 1].push(value);
+	  }, true);
 
 	  // Array Functions
 	  // ---------------
@@ -901,7 +944,7 @@ var Clustergrammer =
 	  // values in the array. Aliased as `head` and `take`. The **guard** check
 	  // allows it to work with `_.map`.
 	  _.first = _.head = _.take = function(array, n, guard) {
-	    if (array == null) return void 0;
+	    if (array == null || array.length < 1) return n == null ? void 0 : [];
 	    if (n == null || guard) return array[0];
 	    return _.initial(array, array.length - n);
 	  };
@@ -916,7 +959,7 @@ var Clustergrammer =
 	  // Get the last element of an array. Passing **n** will return the last N
 	  // values in the array.
 	  _.last = function(array, n, guard) {
-	    if (array == null) return void 0;
+	    if (array == null || array.length < 1) return n == null ? void 0 : [];
 	    if (n == null || guard) return array[array.length - 1];
 	    return _.rest(array, Math.max(0, array.length - n));
 	  };
@@ -930,21 +973,23 @@ var Clustergrammer =
 
 	  // Trim out all falsy values from an array.
 	  _.compact = function(array) {
-	    return _.filter(array, _.identity);
+	    return _.filter(array, Boolean);
 	  };
 
 	  // Internal implementation of a recursive `flatten` function.
-	  var flatten = function(input, shallow, strict, startIndex) {
-	    var output = [], idx = 0;
-	    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
+	  var flatten = function(input, shallow, strict, output) {
+	    output = output || [];
+	    var idx = output.length;
+	    for (var i = 0, length = getLength(input); i < length; i++) {
 	      var value = input[i];
 	      if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
-	        //flatten current level of array or arguments object
-	        if (!shallow) value = flatten(value, shallow, strict);
-	        var j = 0, len = value.length;
-	        output.length += len;
-	        while (j < len) {
-	          output[idx++] = value[j++];
+	        // Flatten current level of array or arguments object.
+	        if (shallow) {
+	          var j = 0, len = value.length;
+	          while (j < len) output[idx++] = value[j++];
+	        } else {
+	          flatten(value, shallow, strict, output);
+	          idx = output.length;
 	        }
 	      } else if (!strict) {
 	        output[idx++] = value;
@@ -959,12 +1004,15 @@ var Clustergrammer =
 	  };
 
 	  // Return a version of the array that does not contain the specified value(s).
-	  _.without = function(array) {
-	    return _.difference(array, slice.call(arguments, 1));
-	  };
+	  _.without = restArguments(function(array, otherArrays) {
+	    return _.difference(array, otherArrays);
+	  });
 
 	  // Produce a duplicate-free version of the array. If the array has already
 	  // been sorted, you have the option of using a faster algorithm.
+	  // The faster algorithm will not work with an iteratee if the iteratee
+	  // is not a one-to-one function, so providing an iteratee will disable
+	  // the faster algorithm.
 	  // Aliased as `unique`.
 	  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
 	    if (!_.isBoolean(isSorted)) {
@@ -978,7 +1026,7 @@ var Clustergrammer =
 	    for (var i = 0, length = getLength(array); i < length; i++) {
 	      var value = array[i],
 	          computed = iteratee ? iteratee(value, i, array) : value;
-	      if (isSorted) {
+	      if (isSorted && !iteratee) {
 	        if (!i || seen !== computed) result.push(value);
 	        seen = computed;
 	      } else if (iteratee) {
@@ -995,9 +1043,9 @@ var Clustergrammer =
 
 	  // Produce an array that contains the union: each distinct element from all of
 	  // the passed-in arrays.
-	  _.union = function() {
-	    return _.uniq(flatten(arguments, true, true));
-	  };
+	  _.union = restArguments(function(arrays) {
+	    return _.uniq(flatten(arrays, true, true));
+	  });
 
 	  // Produce an array that contains every item shared between all the
 	  // passed-in arrays.
@@ -1007,7 +1055,8 @@ var Clustergrammer =
 	    for (var i = 0, length = getLength(array); i < length; i++) {
 	      var item = array[i];
 	      if (_.contains(result, item)) continue;
-	      for (var j = 1; j < argsLength; j++) {
+	      var j;
+	      for (j = 1; j < argsLength; j++) {
 	        if (!_.contains(arguments[j], item)) break;
 	      }
 	      if (j === argsLength) result.push(item);
@@ -1017,21 +1066,15 @@ var Clustergrammer =
 
 	  // Take the difference between one array and a number of other arrays.
 	  // Only the elements present in just the first array will remain.
-	  _.difference = function(array) {
-	    var rest = flatten(arguments, true, true, 1);
+	  _.difference = restArguments(function(array, rest) {
+	    rest = flatten(rest, true, true);
 	    return _.filter(array, function(value){
 	      return !_.contains(rest, value);
 	    });
-	  };
-
-	  // Zip together multiple lists into a single array -- elements that share
-	  // an index go together.
-	  _.zip = function() {
-	    return _.unzip(arguments);
-	  };
+	  });
 
 	  // Complement of _.zip. Unzip accepts an array of arrays and groups
-	  // each array's elements on shared indices
+	  // each array's elements on shared indices.
 	  _.unzip = function(array) {
 	    var length = array && _.max(array, getLength).length || 0;
 	    var result = Array(length);
@@ -1042,9 +1085,13 @@ var Clustergrammer =
 	    return result;
 	  };
 
+	  // Zip together multiple lists into a single array -- elements that share
+	  // an index go together.
+	  _.zip = restArguments(_.unzip);
+
 	  // Converts lists into objects. Pass either a single array of `[key, value]`
 	  // pairs, or two parallel arrays of the same length -- one of keys, and one of
-	  // the corresponding values.
+	  // the corresponding values. Passing by pairs is the reverse of _.pairs.
 	  _.object = function(list, values) {
 	    var result = {};
 	    for (var i = 0, length = getLength(list); i < length; i++) {
@@ -1057,8 +1104,8 @@ var Clustergrammer =
 	    return result;
 	  };
 
-	  // Generator function to create the findIndex and findLastIndex functions
-	  function createPredicateIndexFinder(dir) {
+	  // Generator function to create the findIndex and findLastIndex functions.
+	  var createPredicateIndexFinder = function(dir) {
 	    return function(array, predicate, context) {
 	      predicate = cb(predicate, context);
 	      var length = getLength(array);
@@ -1068,9 +1115,9 @@ var Clustergrammer =
 	      }
 	      return -1;
 	    };
-	  }
+	  };
 
-	  // Returns the first index on an array-like that passes a predicate test
+	  // Returns the first index on an array-like that passes a predicate test.
 	  _.findIndex = createPredicateIndexFinder(1);
 	  _.findLastIndex = createPredicateIndexFinder(-1);
 
@@ -1087,15 +1134,15 @@ var Clustergrammer =
 	    return low;
 	  };
 
-	  // Generator function to create the indexOf and lastIndexOf functions
-	  function createIndexFinder(dir, predicateFind, sortedIndex) {
+	  // Generator function to create the indexOf and lastIndexOf functions.
+	  var createIndexFinder = function(dir, predicateFind, sortedIndex) {
 	    return function(array, item, idx) {
 	      var i = 0, length = getLength(array);
 	      if (typeof idx == 'number') {
 	        if (dir > 0) {
-	            i = idx >= 0 ? idx : Math.max(idx + length, i);
+	          i = idx >= 0 ? idx : Math.max(idx + length, i);
 	        } else {
-	            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+	          length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
 	        }
 	      } else if (sortedIndex && idx && length) {
 	        idx = sortedIndex(array, item);
@@ -1110,7 +1157,7 @@ var Clustergrammer =
 	      }
 	      return -1;
 	    };
-	  }
+	  };
 
 	  // Return the position of the first occurrence of an item in an array,
 	  // or -1 if the item is not included in the array.
@@ -1127,7 +1174,9 @@ var Clustergrammer =
 	      stop = start || 0;
 	      start = 0;
 	    }
-	    step = step || 1;
+	    if (!step) {
+	      step = stop < start ? -1 : 1;
+	    }
 
 	    var length = Math.max(Math.ceil((stop - start) / step), 0);
 	    var range = Array(length);
@@ -1139,11 +1188,23 @@ var Clustergrammer =
 	    return range;
 	  };
 
+	  // Chunk a single array into multiple arrays, each containing `count` or fewer
+	  // items.
+	  _.chunk = function(array, count) {
+	    if (count == null || count < 1) return [];
+	    var result = [];
+	    var i = 0, length = array.length;
+	    while (i < length) {
+	      result.push(slice.call(array, i, i += count));
+	    }
+	    return result;
+	  };
+
 	  // Function (ahem) Functions
 	  // ------------------
 
 	  // Determines whether to execute a function as a constructor
-	  // or a normal function with the provided arguments
+	  // or a normal function with the provided arguments.
 	  var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
 	    if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
 	    var self = baseCreate(sourceFunc.prototype);
@@ -1155,52 +1216,53 @@ var Clustergrammer =
 	  // Create a function bound to a given object (assigning `this`, and arguments,
 	  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
 	  // available.
-	  _.bind = function(func, context) {
-	    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
+	  _.bind = restArguments(function(func, context, args) {
 	    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
-	    var args = slice.call(arguments, 2);
-	    var bound = function() {
-	      return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
-	    };
+	    var bound = restArguments(function(callArgs) {
+	      return executeBound(func, bound, context, this, args.concat(callArgs));
+	    });
 	    return bound;
-	  };
+	  });
 
 	  // Partially apply a function by creating a version that has had some of its
 	  // arguments pre-filled, without changing its dynamic `this` context. _ acts
-	  // as a placeholder, allowing any combination of arguments to be pre-filled.
-	  _.partial = function(func) {
-	    var boundArgs = slice.call(arguments, 1);
+	  // as a placeholder by default, allowing any combination of arguments to be
+	  // pre-filled. Set `_.partial.placeholder` for a custom placeholder argument.
+	  _.partial = restArguments(function(func, boundArgs) {
+	    var placeholder = _.partial.placeholder;
 	    var bound = function() {
 	      var position = 0, length = boundArgs.length;
 	      var args = Array(length);
 	      for (var i = 0; i < length; i++) {
-	        args[i] = boundArgs[i] === _ ? arguments[position++] : boundArgs[i];
+	        args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
 	      }
 	      while (position < arguments.length) args.push(arguments[position++]);
 	      return executeBound(func, bound, this, this, args);
 	    };
 	    return bound;
-	  };
+	  });
+
+	  _.partial.placeholder = _;
 
 	  // Bind a number of an object's methods to that object. Remaining arguments
 	  // are the method names to be bound. Useful for ensuring that all callbacks
 	  // defined on an object belong to it.
-	  _.bindAll = function(obj) {
-	    var i, length = arguments.length, key;
-	    if (length <= 1) throw new Error('bindAll must be passed function names');
-	    for (i = 1; i < length; i++) {
-	      key = arguments[i];
+	  _.bindAll = restArguments(function(obj, keys) {
+	    keys = flatten(keys, false, false);
+	    var index = keys.length;
+	    if (index < 1) throw new Error('bindAll must be passed function names');
+	    while (index--) {
+	      var key = keys[index];
 	      obj[key] = _.bind(obj[key], obj);
 	    }
-	    return obj;
-	  };
+	  });
 
 	  // Memoize an expensive function by storing its results.
 	  _.memoize = function(func, hasher) {
 	    var memoize = function(key) {
 	      var cache = memoize.cache;
 	      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
-	      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+	      if (!has(cache, address)) cache[address] = func.apply(this, arguments);
 	      return cache[address];
 	    };
 	    memoize.cache = {};
@@ -1209,12 +1271,11 @@ var Clustergrammer =
 
 	  // Delays a function for the given number of milliseconds, and then calls
 	  // it with the arguments supplied.
-	  _.delay = function(func, wait) {
-	    var args = slice.call(arguments, 2);
-	    return setTimeout(function(){
+	  _.delay = restArguments(function(func, wait, args) {
+	    return setTimeout(function() {
 	      return func.apply(null, args);
 	    }, wait);
-	  };
+	  });
 
 	  // Defers a function, scheduling it to run after the current call stack has
 	  // cleared.
@@ -1226,17 +1287,18 @@ var Clustergrammer =
 	  // but if you'd like to disable the execution on the leading edge, pass
 	  // `{leading: false}`. To disable execution on the trailing edge, ditto.
 	  _.throttle = function(func, wait, options) {
-	    var context, args, result;
-	    var timeout = null;
+	    var timeout, context, args, result;
 	    var previous = 0;
 	    if (!options) options = {};
+
 	    var later = function() {
 	      previous = options.leading === false ? 0 : _.now();
 	      timeout = null;
 	      result = func.apply(context, args);
 	      if (!timeout) context = args = null;
 	    };
-	    return function() {
+
+	    var throttled = function() {
 	      var now = _.now();
 	      if (!previous && options.leading === false) previous = now;
 	      var remaining = wait - (now - previous);
@@ -1255,6 +1317,14 @@ var Clustergrammer =
 	      }
 	      return result;
 	    };
+
+	    throttled.cancel = function() {
+	      clearTimeout(timeout);
+	      previous = 0;
+	      timeout = context = args = null;
+	    };
+
+	    return throttled;
 	  };
 
 	  // Returns a function, that, as long as it continues to be invoked, will not
@@ -1262,35 +1332,32 @@ var Clustergrammer =
 	  // N milliseconds. If `immediate` is passed, trigger the function on the
 	  // leading edge, instead of the trailing.
 	  _.debounce = function(func, wait, immediate) {
-	    var timeout, args, context, timestamp, result;
+	    var timeout, result;
 
-	    var later = function() {
-	      var last = _.now() - timestamp;
-
-	      if (last < wait && last >= 0) {
-	        timeout = setTimeout(later, wait - last);
-	      } else {
-	        timeout = null;
-	        if (!immediate) {
-	          result = func.apply(context, args);
-	          if (!timeout) context = args = null;
-	        }
-	      }
+	    var later = function(context, args) {
+	      timeout = null;
+	      if (args) result = func.apply(context, args);
 	    };
 
-	    return function() {
-	      context = this;
-	      args = arguments;
-	      timestamp = _.now();
-	      var callNow = immediate && !timeout;
-	      if (!timeout) timeout = setTimeout(later, wait);
-	      if (callNow) {
-	        result = func.apply(context, args);
-	        context = args = null;
+	    var debounced = restArguments(function(args) {
+	      if (timeout) clearTimeout(timeout);
+	      if (immediate) {
+	        var callNow = !timeout;
+	        timeout = setTimeout(later, wait);
+	        if (callNow) result = func.apply(this, args);
+	      } else {
+	        timeout = _.delay(later, wait, this, args);
 	      }
 
 	      return result;
+	    });
+
+	    debounced.cancel = function() {
+	      clearTimeout(timeout);
+	      timeout = null;
 	    };
+
+	    return debounced;
 	  };
 
 	  // Returns the first function passed as an argument to the second,
@@ -1345,22 +1412,24 @@ var Clustergrammer =
 	  // often you call it. Useful for lazy initialization.
 	  _.once = _.partial(_.before, 2);
 
+	  _.restArguments = restArguments;
+
 	  // Object Functions
 	  // ----------------
 
 	  // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
 	  var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
 	  var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
-	                      'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+	    'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
 
-	  function collectNonEnumProps(obj, keys) {
+	  var collectNonEnumProps = function(obj, keys) {
 	    var nonEnumIdx = nonEnumerableProps.length;
 	    var constructor = obj.constructor;
-	    var proto = (_.isFunction(constructor) && constructor.prototype) || ObjProto;
+	    var proto = _.isFunction(constructor) && constructor.prototype || ObjProto;
 
 	    // Constructor is a special case.
 	    var prop = 'constructor';
-	    if (_.has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
+	    if (has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
 
 	    while (nonEnumIdx--) {
 	      prop = nonEnumerableProps[nonEnumIdx];
@@ -1368,15 +1437,15 @@ var Clustergrammer =
 	        keys.push(prop);
 	      }
 	    }
-	  }
+	  };
 
 	  // Retrieve the names of an object's own properties.
-	  // Delegates to **ECMAScript 5**'s native `Object.keys`
+	  // Delegates to **ECMAScript 5**'s native `Object.keys`.
 	  _.keys = function(obj) {
 	    if (!_.isObject(obj)) return [];
 	    if (nativeKeys) return nativeKeys(obj);
 	    var keys = [];
-	    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+	    for (var key in obj) if (has(obj, key)) keys.push(key);
 	    // Ahem, IE < 9.
 	    if (hasEnumBug) collectNonEnumProps(obj, keys);
 	    return keys;
@@ -1403,22 +1472,22 @@ var Clustergrammer =
 	    return values;
 	  };
 
-	  // Returns the results of applying the iteratee to each element of the object
-	  // In contrast to _.map it returns an object
+	  // Returns the results of applying the iteratee to each element of the object.
+	  // In contrast to _.map it returns an object.
 	  _.mapObject = function(obj, iteratee, context) {
 	    iteratee = cb(iteratee, context);
-	    var keys =  _.keys(obj),
-	          length = keys.length,
-	          results = {},
-	          currentKey;
-	      for (var index = 0; index < length; index++) {
-	        currentKey = keys[index];
-	        results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
-	      }
-	      return results;
+	    var keys = _.keys(obj),
+	        length = keys.length,
+	        results = {};
+	    for (var index = 0; index < length; index++) {
+	      var currentKey = keys[index];
+	      results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
+	    }
+	    return results;
 	  };
 
 	  // Convert an object into a list of `[key, value]` pairs.
+	  // The opposite of _.object.
 	  _.pairs = function(obj) {
 	    var keys = _.keys(obj);
 	    var length = keys.length;
@@ -1440,7 +1509,7 @@ var Clustergrammer =
 	  };
 
 	  // Return a sorted list of the function names available on the object.
-	  // Aliased as `methods`
+	  // Aliased as `methods`.
 	  _.functions = _.methods = function(obj) {
 	    var names = [];
 	    for (var key in obj) {
@@ -1449,14 +1518,33 @@ var Clustergrammer =
 	    return names.sort();
 	  };
 
+	  // An internal function for creating assigner functions.
+	  var createAssigner = function(keysFunc, defaults) {
+	    return function(obj) {
+	      var length = arguments.length;
+	      if (defaults) obj = Object(obj);
+	      if (length < 2 || obj == null) return obj;
+	      for (var index = 1; index < length; index++) {
+	        var source = arguments[index],
+	            keys = keysFunc(source),
+	            l = keys.length;
+	        for (var i = 0; i < l; i++) {
+	          var key = keys[i];
+	          if (!defaults || obj[key] === void 0) obj[key] = source[key];
+	        }
+	      }
+	      return obj;
+	    };
+	  };
+
 	  // Extend a given object with all the properties in passed-in object(s).
 	  _.extend = createAssigner(_.allKeys);
 
-	  // Assigns a given object with all the own properties in the passed-in object(s)
+	  // Assigns a given object with all the own properties in the passed-in object(s).
 	  // (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 	  _.extendOwn = _.assign = createAssigner(_.keys);
 
-	  // Returns the first key on an object that passes a predicate test
+	  // Returns the first key on an object that passes a predicate test.
 	  _.findKey = function(obj, predicate, context) {
 	    predicate = cb(predicate, context);
 	    var keys = _.keys(obj), key;
@@ -1466,16 +1554,21 @@ var Clustergrammer =
 	    }
 	  };
 
+	  // Internal pick helper function to determine if `obj` has key `key`.
+	  var keyInObj = function(value, key, obj) {
+	    return key in obj;
+	  };
+
 	  // Return a copy of the object only containing the whitelisted properties.
-	  _.pick = function(object, oiteratee, context) {
-	    var result = {}, obj = object, iteratee, keys;
+	  _.pick = restArguments(function(obj, keys) {
+	    var result = {}, iteratee = keys[0];
 	    if (obj == null) return result;
-	    if (_.isFunction(oiteratee)) {
+	    if (_.isFunction(iteratee)) {
+	      if (keys.length > 1) iteratee = optimizeCb(iteratee, keys[1]);
 	      keys = _.allKeys(obj);
-	      iteratee = optimizeCb(oiteratee, context);
 	    } else {
-	      keys = flatten(arguments, false, false, 1);
-	      iteratee = function(value, key, obj) { return key in obj; };
+	      iteratee = keyInObj;
+	      keys = flatten(keys, false, false);
 	      obj = Object(obj);
 	    }
 	    for (var i = 0, length = keys.length; i < length; i++) {
@@ -1484,20 +1577,22 @@ var Clustergrammer =
 	      if (iteratee(value, key, obj)) result[key] = value;
 	    }
 	    return result;
-	  };
+	  });
 
-	   // Return a copy of the object without the blacklisted properties.
-	  _.omit = function(obj, iteratee, context) {
+	  // Return a copy of the object without the blacklisted properties.
+	  _.omit = restArguments(function(obj, keys) {
+	    var iteratee = keys[0], context;
 	    if (_.isFunction(iteratee)) {
 	      iteratee = _.negate(iteratee);
+	      if (keys.length > 1) context = keys[1];
 	    } else {
-	      var keys = _.map(flatten(arguments, false, false, 1), String);
+	      keys = _.map(flatten(keys, false, false), String);
 	      iteratee = function(value, key) {
 	        return !_.contains(keys, key);
 	      };
 	    }
 	    return _.pick(obj, iteratee, context);
-	  };
+	  });
 
 	  // Fill in a given object with default properties.
 	  _.defaults = createAssigner(_.allKeys, true);
@@ -1539,12 +1634,23 @@ var Clustergrammer =
 
 
 	  // Internal recursive comparison function for `isEqual`.
-	  var eq = function(a, b, aStack, bStack) {
+	  var eq, deepEq;
+	  eq = function(a, b, aStack, bStack) {
 	    // Identical objects are equal. `0 === -0`, but they aren't identical.
 	    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
 	    if (a === b) return a !== 0 || 1 / a === 1 / b;
-	    // A strict comparison is necessary because `null == undefined`.
-	    if (a == null || b == null) return a === b;
+	    // `null` or `undefined` only equal to itself (strict comparison).
+	    if (a == null || b == null) return false;
+	    // `NaN`s are equivalent, but non-reflexive.
+	    if (a !== a) return b !== b;
+	    // Exhaust primitive checks
+	    var type = typeof a;
+	    if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
+	    return deepEq(a, b, aStack, bStack);
+	  };
+
+	  // Internal recursive comparison function for `isEqual`.
+	  deepEq = function(a, b, aStack, bStack) {
 	    // Unwrap any wrapped objects.
 	    if (a instanceof _) a = a._wrapped;
 	    if (b instanceof _) b = b._wrapped;
@@ -1561,7 +1667,7 @@ var Clustergrammer =
 	        return '' + a === '' + b;
 	      case '[object Number]':
 	        // `NaN`s are equivalent, but non-reflexive.
-	        // Object(NaN) is equivalent to NaN
+	        // Object(NaN) is equivalent to NaN.
 	        if (+a !== +a) return +b !== +b;
 	        // An `egal` comparison is performed for other numeric values.
 	        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
@@ -1571,6 +1677,8 @@ var Clustergrammer =
 	        // millisecond representations. Note that invalid dates with millisecond representations
 	        // of `NaN` are not equivalent.
 	        return +a === +b;
+	      case '[object Symbol]':
+	        return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
 	    }
 
 	    var areArrays = className === '[object Array]';
@@ -1622,7 +1730,7 @@ var Clustergrammer =
 	      while (length--) {
 	        // Deep compare each member
 	        key = keys[length];
-	        if (!(_.has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+	        if (!(has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
 	      }
 	    }
 	    // Remove the first object from the stack of traversed objects.
@@ -1661,8 +1769,8 @@ var Clustergrammer =
 	    return type === 'function' || type === 'object' && !!obj;
 	  };
 
-	  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError.
-	  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function(name) {
+	  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError, isMap, isWeakMap, isSet, isWeakSet.
+	  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error', 'Symbol', 'Map', 'WeakMap', 'Set', 'WeakSet'], function(name) {
 	    _['is' + name] = function(obj) {
 	      return toString.call(obj) === '[object ' + name + ']';
 	    };
@@ -1672,13 +1780,14 @@ var Clustergrammer =
 	  // there isn't any inspectable "Arguments" type.
 	  if (!_.isArguments(arguments)) {
 	    _.isArguments = function(obj) {
-	      return _.has(obj, 'callee');
+	      return has(obj, 'callee');
 	    };
 	  }
 
 	  // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
-	  // IE 11 (#1621), and in Safari 8 (#1929).
-	  if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+	  // IE 11 (#1621), Safari 8 (#1929), and PhantomJS (#2236).
+	  var nodelist = root.document && root.document.childNodes;
+	  if (typeof /./ != 'function' && typeof Int8Array != 'object' && typeof nodelist != 'function') {
 	    _.isFunction = function(obj) {
 	      return typeof obj == 'function' || false;
 	    };
@@ -1686,12 +1795,12 @@ var Clustergrammer =
 
 	  // Is a given object a finite number?
 	  _.isFinite = function(obj) {
-	    return isFinite(obj) && !isNaN(parseFloat(obj));
+	    return !_.isSymbol(obj) && isFinite(obj) && !isNaN(parseFloat(obj));
 	  };
 
-	  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
+	  // Is the given value `NaN`?
 	  _.isNaN = function(obj) {
-	    return _.isNumber(obj) && obj !== +obj;
+	    return _.isNumber(obj) && isNaN(obj);
 	  };
 
 	  // Is a given value a boolean?
@@ -1711,8 +1820,19 @@ var Clustergrammer =
 
 	  // Shortcut function for checking if an object has a given property directly
 	  // on itself (in other words, not on a prototype).
-	  _.has = function(obj, key) {
-	    return obj != null && hasOwnProperty.call(obj, key);
+	  _.has = function(obj, path) {
+	    if (!_.isArray(path)) {
+	      return has(obj, path);
+	    }
+	    var length = path.length;
+	    for (var i = 0; i < length; i++) {
+	      var key = path[i];
+	      if (obj == null || !hasOwnProperty.call(obj, key)) {
+	        return false;
+	      }
+	      obj = obj[key];
+	    }
+	    return !!length;
 	  };
 
 	  // Utility Functions
@@ -1739,12 +1859,24 @@ var Clustergrammer =
 
 	  _.noop = function(){};
 
-	  _.property = property;
+	  // Creates a function that, when passed an object, will traverse that object’s
+	  // properties down the given `path`, specified as an array of keys or indexes.
+	  _.property = function(path) {
+	    if (!_.isArray(path)) {
+	      return shallowProperty(path);
+	    }
+	    return function(obj) {
+	      return deepGet(obj, path);
+	    };
+	  };
 
 	  // Generates a function for a given object that returns a given property.
 	  _.propertyOf = function(obj) {
-	    return obj == null ? function(){} : function(key) {
-	      return obj[key];
+	    if (obj == null) {
+	      return function(){};
+	    }
+	    return function(path) {
+	      return !_.isArray(path) ? obj[path] : deepGet(obj, path);
 	    };
 	  };
 
@@ -1779,7 +1911,7 @@ var Clustergrammer =
 	    return new Date().getTime();
 	  };
 
-	   // List of HTML entities for escaping.
+	  // List of HTML entities for escaping.
 	  var escapeMap = {
 	    '&': '&amp;',
 	    '<': '&lt;',
@@ -1795,7 +1927,7 @@ var Clustergrammer =
 	    var escaper = function(match) {
 	      return map[match];
 	    };
-	    // Regexes for identifying a key that needs to be escaped
+	    // Regexes for identifying a key that needs to be escaped.
 	    var source = '(?:' + _.keys(map).join('|') + ')';
 	    var testRegexp = RegExp(source);
 	    var replaceRegexp = RegExp(source, 'g');
@@ -1807,14 +1939,24 @@ var Clustergrammer =
 	  _.escape = createEscaper(escapeMap);
 	  _.unescape = createEscaper(unescapeMap);
 
-	  // If the value of the named `property` is a function then invoke it with the
-	  // `object` as context; otherwise, return it.
-	  _.result = function(object, property, fallback) {
-	    var value = object == null ? void 0 : object[property];
-	    if (value === void 0) {
-	      value = fallback;
+	  // Traverses the children of `obj` along `path`. If a child is a function, it
+	  // is invoked with its parent as context. Returns the value of the final
+	  // child, or `fallback` if any child is undefined.
+	  _.result = function(obj, path, fallback) {
+	    if (!_.isArray(path)) path = [path];
+	    var length = path.length;
+	    if (!length) {
+	      return _.isFunction(fallback) ? fallback.call(obj) : fallback;
 	    }
-	    return _.isFunction(value) ? value.call(object) : value;
+	    for (var i = 0; i < length; i++) {
+	      var prop = obj == null ? void 0 : obj[path[i]];
+	      if (prop === void 0) {
+	        prop = fallback;
+	        i = length; // Ensure we don't continue iterating.
+	      }
+	      obj = _.isFunction(prop) ? prop.call(obj) : prop;
+	    }
+	    return obj;
 	  };
 
 	  // Generate a unique integer id (unique within the entire client session).
@@ -1828,9 +1970,9 @@ var Clustergrammer =
 	  // By default, Underscore uses ERB-style template delimiters, change the
 	  // following template settings to use alternative delimiters.
 	  _.templateSettings = {
-	    evaluate    : /<%([\s\S]+?)%>/g,
-	    interpolate : /<%=([\s\S]+?)%>/g,
-	    escape      : /<%-([\s\S]+?)%>/g
+	    evaluate: /<%([\s\S]+?)%>/g,
+	    interpolate: /<%=([\s\S]+?)%>/g,
+	    escape: /<%-([\s\S]+?)%>/g
 	  };
 
 	  // When customizing `templateSettings`, if you don't want to define an
@@ -1841,15 +1983,15 @@ var Clustergrammer =
 	  // Certain characters need to be escaped so that they can be put into a
 	  // string literal.
 	  var escapes = {
-	    "'":      "'",
-	    '\\':     '\\',
-	    '\r':     'r',
-	    '\n':     'n',
+	    "'": "'",
+	    '\\': '\\',
+	    '\r': 'r',
+	    '\n': 'n',
 	    '\u2028': 'u2028',
 	    '\u2029': 'u2029'
 	  };
 
-	  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+	  var escapeRegExp = /\\|'|\r|\n|\u2028|\u2029/g;
 
 	  var escapeChar = function(match) {
 	    return '\\' + escapes[match];
@@ -1874,7 +2016,7 @@ var Clustergrammer =
 	    var index = 0;
 	    var source = "__p+='";
 	    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
-	      source += text.slice(index, offset).replace(escaper, escapeChar);
+	      source += text.slice(index, offset).replace(escapeRegExp, escapeChar);
 	      index = offset + match.length;
 
 	      if (escape) {
@@ -1885,7 +2027,7 @@ var Clustergrammer =
 	        source += "';\n" + evaluate + "\n__p+='";
 	      }
 
-	      // Adobe VMs need the match returned to produce the correct offest.
+	      // Adobe VMs need the match returned to produce the correct offset.
 	      return match;
 	    });
 	    source += "';\n";
@@ -1897,8 +2039,9 @@ var Clustergrammer =
 	      "print=function(){__p+=__j.call(arguments,'');};\n" +
 	      source + 'return __p;\n';
 
+	    var render;
 	    try {
-	      var render = new Function(settings.variable || 'obj', '_', source);
+	      render = new Function(settings.variable || 'obj', '_', source);
 	    } catch (e) {
 	      e.source = source;
 	      throw e;
@@ -1929,7 +2072,7 @@ var Clustergrammer =
 	  // underscore functions. Wrapped objects may be chained.
 
 	  // Helper function to continue chaining intermediate results.
-	  var result = function(instance, obj) {
+	  var chainResult = function(instance, obj) {
 	    return instance._chain ? _(obj).chain() : obj;
 	  };
 
@@ -1940,9 +2083,10 @@ var Clustergrammer =
 	      _.prototype[name] = function() {
 	        var args = [this._wrapped];
 	        push.apply(args, arguments);
-	        return result(this, func.apply(_, args));
+	        return chainResult(this, func.apply(_, args));
 	      };
 	    });
+	    return _;
 	  };
 
 	  // Add all of the Underscore functions to the wrapper object.
@@ -1955,7 +2099,7 @@ var Clustergrammer =
 	      var obj = this._wrapped;
 	      method.apply(obj, arguments);
 	      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
-	      return result(this, obj);
+	      return chainResult(this, obj);
 	    };
 	  });
 
@@ -1963,7 +2107,7 @@ var Clustergrammer =
 	  _.each(['concat', 'join', 'slice'], function(name) {
 	    var method = ArrayProto[name];
 	    _.prototype[name] = function() {
-	      return result(this, method.apply(this._wrapped, arguments));
+	      return chainResult(this, method.apply(this._wrapped, arguments));
 	    };
 	  });
 
@@ -1977,7 +2121,7 @@ var Clustergrammer =
 	  _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
 
 	  _.prototype.toString = function() {
-	    return '' + this._wrapped;
+	    return String(this._wrapped);
 	  };
 
 	  // AMD registration happens at the end for compatibility with AMD loaders
@@ -1992,11 +2136,28 @@ var Clustergrammer =
 	      return _;
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
-	}.call(this));
+	}());
 
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(4)(module)))
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -2037,7 +2198,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -2092,7 +2253,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 	module.exports = function get_filter_default_state(filter_data, filter_type) {
@@ -2107,7 +2268,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 	module.exports = function set_defaults() {
@@ -2188,7 +2349,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -2223,7 +2384,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -2244,15 +2405,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_network_using_view = __webpack_require__(11);
-	var ini_sidebar_params = __webpack_require__(65);
-	var make_requested_view = __webpack_require__(66);
-	var get_available_filters = __webpack_require__(5);
-	var calc_viz_params = __webpack_require__(67);
-	var ini_zoom_info = __webpack_require__(88);
+	var make_network_using_view = __webpack_require__(12);
+	var ini_sidebar_params = __webpack_require__(66);
+	var make_requested_view = __webpack_require__(67);
+	var get_available_filters = __webpack_require__(6);
+	var calc_viz_params = __webpack_require__(68);
+	var ini_zoom_info = __webpack_require__(89);
 
 	/*
 	Params: calculates the size of all the visualization elements in the
@@ -2299,11 +2460,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var filter_network_using_new_nodes = __webpack_require__(12);
-	var get_subset_views = __webpack_require__(64);
+	var filter_network_using_new_nodes = __webpack_require__(13);
+	var get_subset_views = __webpack_require__(65);
 
 	module.exports = function make_network_using_view(config, params, requested_view) {
 
@@ -2340,15 +2501,15 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var core = __webpack_require__(13);
+	var core = __webpack_require__(14);
 	var underscore = __webpack_require__(3);
 	var math = core.create();
-	math.import(__webpack_require__(26));
-	math.import(__webpack_require__(63));
+	math.import(__webpack_require__(27));
+	math.import(__webpack_require__(64));
 
 	module.exports = function filter_network_using_new_nodes(config, new_nodes) {
 
@@ -2415,21 +2576,21 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(14);
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isFactory = __webpack_require__(15).isFactory;
-	var typedFactory = __webpack_require__(17);
-	var emitter = __webpack_require__(21);
+	module.exports = __webpack_require__(15);
 
-	var importFactory = __webpack_require__(23);
-	var configFactory = __webpack_require__(25);
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var isFactory = __webpack_require__(16).isFactory;
+	var typedFactory = __webpack_require__(18);
+	var emitter = __webpack_require__(22);
+
+	var importFactory = __webpack_require__(24);
+	var configFactory = __webpack_require__(26);
 
 	/**
 	 * Math.js core. Creates a new, empty math.js instance
@@ -2559,12 +2720,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var isBigNumber = __webpack_require__(16);
+	var isBigNumber = __webpack_require__(17);
 
 	/**
 	 * Clone an object
@@ -2829,7 +2990,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 	/**
@@ -2843,13 +3004,13 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var typedFunction = __webpack_require__(18);
-	var digits = __webpack_require__(19).digits;
-	var isBigNumber = __webpack_require__(16);
-	var isMatrix = __webpack_require__(20);
+	var typedFunction = __webpack_require__(19);
+	var digits = __webpack_require__(20).digits;
+	var isBigNumber = __webpack_require__(17);
+	var isMatrix = __webpack_require__(21);
 
 	// returns a new instance of typed-function
 	var createTyped = function () {
@@ -3140,7 +3301,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -4536,7 +4697,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -5048,7 +5209,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -5065,10 +5226,10 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Emitter = __webpack_require__(22);
+	var Emitter = __webpack_require__(23);
 
 	/**
 	 * Extend given object with emitter functions `on`, `off`, `once`, `emit`
@@ -5090,7 +5251,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -5162,15 +5323,15 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var lazy = __webpack_require__(15).lazy;
-	var isFactory = __webpack_require__(15).isFactory;
-	var traverse = __webpack_require__(15).traverse;
-	var ArgumentsError = __webpack_require__(24);
+	var lazy = __webpack_require__(16).lazy;
+	var isFactory = __webpack_require__(16).isFactory;
+	var traverse = __webpack_require__(16).traverse;
+	var ArgumentsError = __webpack_require__(25);
 
 	function factory (type, config, load, typed, math) {
 	  /**
@@ -5475,7 +5636,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -5515,12 +5676,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var object = __webpack_require__(15);
+	var object = __webpack_require__(16);
 
 	function factory (type, config, load, typed, math) {
 	  var MATRIX = ['Matrix', 'Array'];                   // valid values for option matrix
@@ -5645,34 +5806,34 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = [
 	  // types
-	  __webpack_require__(27),
-	  __webpack_require__(37),
-	  __webpack_require__(39),
-	  __webpack_require__(42),
-	  __webpack_require__(52),
-	  __webpack_require__(58),
+	  __webpack_require__(28),
+	  __webpack_require__(38),
+	  __webpack_require__(40),
+	  __webpack_require__(43),
+	  __webpack_require__(53),
 	  __webpack_require__(59),
 	  __webpack_require__(60),
+	  __webpack_require__(61),
 
 	  // construction functions
-	  __webpack_require__(61),
-	  __webpack_require__(44),
-	  __webpack_require__(62)
+	  __webpack_require__(62),
+	  __webpack_require__(45),
+	  __webpack_require__(63)
 	];
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var util = __webpack_require__(28);
+	var util = __webpack_require__(29);
 
 	var string = util.string;
 
@@ -5939,34 +6100,34 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.array = __webpack_require__(29);
-	exports['boolean'] = __webpack_require__(35);
-	exports['function'] = __webpack_require__(36);
-	exports.number = __webpack_require__(19);
-	exports.object = __webpack_require__(15);
-	exports.string = __webpack_require__(30);
-	exports.types = __webpack_require__(32);
-	exports.emitter = __webpack_require__(21);
-
-
-/***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var number = __webpack_require__(19);
-	var string = __webpack_require__(30);
-	var object = __webpack_require__(15);
-	var types = __webpack_require__(32);
+	exports.array = __webpack_require__(30);
+	exports['boolean'] = __webpack_require__(36);
+	exports['function'] = __webpack_require__(37);
+	exports.number = __webpack_require__(20);
+	exports.object = __webpack_require__(16);
+	exports.string = __webpack_require__(31);
+	exports.types = __webpack_require__(33);
+	exports.emitter = __webpack_require__(22);
 
-	var DimensionError = __webpack_require__(33);
-	var IndexError = __webpack_require__(34);
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var number = __webpack_require__(20);
+	var string = __webpack_require__(31);
+	var object = __webpack_require__(16);
+	var types = __webpack_require__(33);
+
+	var DimensionError = __webpack_require__(34);
+	var IndexError = __webpack_require__(35);
 
 	/**
 	 * Calculate the size of a multi dimensional array.
@@ -6494,14 +6655,14 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var formatNumber = __webpack_require__(19).format;
-	var formatBigNumber = __webpack_require__(31).format;
-	var isBigNumber = __webpack_require__(16);
+	var formatNumber = __webpack_require__(20).format;
+	var formatBigNumber = __webpack_require__(32).format;
+	var isBigNumber = __webpack_require__(17);
 
 	/**
 	 * Test whether value is a string
@@ -6710,7 +6871,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 	/**
@@ -6899,7 +7060,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -6949,7 +7110,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -6990,7 +7151,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -7042,7 +7203,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -7058,7 +7219,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 	// function utils
@@ -7123,15 +7284,15 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var util = __webpack_require__(28);
-	var DimensionError = __webpack_require__(33);
-	var getSafeProperty = __webpack_require__(38).getSafeProperty;
-	var setSafeProperty = __webpack_require__(38).setSafeProperty;
+	var util = __webpack_require__(29);
+	var DimensionError = __webpack_require__(34);
+	var getSafeProperty = __webpack_require__(39).getSafeProperty;
+	var setSafeProperty = __webpack_require__(39).setSafeProperty;
 
 	var string = util.string;
 	var array = util.array;
@@ -7146,7 +7307,7 @@ var Clustergrammer =
 	var validateIndex = array.validateIndex;
 
 	function factory (type, config, load, typed) {
-	  var Matrix = load(__webpack_require__(27)); // force loading Matrix (do not use via type.Matrix)
+	  var Matrix = load(__webpack_require__(28)); // force loading Matrix (do not use via type.Matrix)
 
 	  /**
 	   * Dense Matrix implementation. A regular, dense matrix, supporting multi-dimensional matrices. This is the default matrix type.
@@ -8013,12 +8174,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var hasOwnProperty = __webpack_require__(15).hasOwnProperty;
+	var hasOwnProperty = __webpack_require__(16).hasOwnProperty;
 
 	/**
 	 * Get a property of a plain object
@@ -8173,13 +8334,13 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var util = __webpack_require__(28);
-	var DimensionError = __webpack_require__(33);
+	var util = __webpack_require__(29);
+	var DimensionError = __webpack_require__(34);
 
 	var array = util.array;
 	var object = util.object;
@@ -8194,8 +8355,8 @@ var Clustergrammer =
 	var validateIndex = array.validateIndex;
 
 	function factory (type, config, load, typed) {
-	  var Matrix = load(__webpack_require__(27)); // force loading Matrix (do not use via type.Matrix)
-	  var equalScalar = load(__webpack_require__(40));
+	  var Matrix = load(__webpack_require__(28)); // force loading Matrix (do not use via type.Matrix)
+	  var equalScalar = load(__webpack_require__(41));
 
 	  /**
 	   * Sparse Matrix implementation. This type implements a Compressed Column Storage format
@@ -9613,13 +9774,13 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nearlyEqual = __webpack_require__(19).nearlyEqual;
-	var bigNearlyEqual = __webpack_require__(41);
+	var nearlyEqual = __webpack_require__(20).nearlyEqual;
+	var bigNearlyEqual = __webpack_require__(42);
 
 	function factory (type, config, load, typed) {
 	  
@@ -9672,7 +9833,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9723,15 +9884,15 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function factory (type, config, load) {
 	  
-	  var add = load(__webpack_require__(43));
-	  var equalScalar = load(__webpack_require__(40));
+	  var add = load(__webpack_require__(44));
+	  var equalScalar = load(__webpack_require__(41));
 	  
 	  /**
 	   * An ordered Sparse Accumulator is a representation for a sparse vector that includes a dense array 
@@ -9870,24 +10031,24 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var extend = __webpack_require__(15).extend;
+	var extend = __webpack_require__(16).extend;
 
 	function factory (type, config, load, typed) {
 
-	  var matrix = load(__webpack_require__(44));
-	  var addScalar = load(__webpack_require__(45));
-	  var latex = __webpack_require__(46);
+	  var matrix = load(__webpack_require__(45));
+	  var addScalar = load(__webpack_require__(46));
+	  var latex = __webpack_require__(47);
 	  
-	  var algorithm01 = load(__webpack_require__(47));
-	  var algorithm04 = load(__webpack_require__(48));
-	  var algorithm10 = load(__webpack_require__(49));
-	  var algorithm13 = load(__webpack_require__(50));
-	  var algorithm14 = load(__webpack_require__(51));
+	  var algorithm01 = load(__webpack_require__(48));
+	  var algorithm04 = load(__webpack_require__(49));
+	  var algorithm10 = load(__webpack_require__(50));
+	  var algorithm13 = load(__webpack_require__(51));
+	  var algorithm14 = load(__webpack_require__(52));
 
 	  /**
 	   * Add two or more values, `x + y`.
@@ -10040,7 +10201,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -10134,7 +10295,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -10191,7 +10352,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -10301,12 +10462,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var DimensionError = __webpack_require__(33);
+	var DimensionError = __webpack_require__(34);
 
 	function factory (type, config, load, typed) {
 
@@ -10421,16 +10582,16 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var DimensionError = __webpack_require__(33);
+	var DimensionError = __webpack_require__(34);
 
 	function factory (type, config, load, typed) {
 
-	  var equalScalar = load(__webpack_require__(40));
+	  var equalScalar = load(__webpack_require__(41));
 
 	  var SparseMatrix = type.SparseMatrix;
 
@@ -10614,7 +10775,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -10730,13 +10891,13 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var util = __webpack_require__(28);
-	var DimensionError = __webpack_require__(33);
+	var util = __webpack_require__(29);
+	var DimensionError = __webpack_require__(34);
 
 	var string = util.string,
 	    isString = string.isString;
@@ -10840,12 +11001,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var clone = __webpack_require__(15).clone;
+	var clone = __webpack_require__(16).clone;
 
 	function factory (type, config, load, typed) {
 
@@ -10928,15 +11089,15 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function factory (type, config, load, typed) {
 	  
-	  var smaller = load(__webpack_require__(53));
-	  var larger = load(__webpack_require__(57));
+	  var smaller = load(__webpack_require__(54));
+	  var larger = load(__webpack_require__(58));
 	  
 	  var oneOverLogPhi = 1.0 / Math.log((1.0 + Math.sqrt(5.0)) / 2.0);
 	  
@@ -11283,25 +11444,25 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nearlyEqual = __webpack_require__(19).nearlyEqual;
-	var bigNearlyEqual = __webpack_require__(41);
+	var nearlyEqual = __webpack_require__(20).nearlyEqual;
+	var bigNearlyEqual = __webpack_require__(42);
 
 	function factory (type, config, load, typed) {
 
-	  var matrix = load(__webpack_require__(44));
+	  var matrix = load(__webpack_require__(45));
 
-	  var algorithm03 = load(__webpack_require__(54));
-	  var algorithm07 = load(__webpack_require__(55));
-	  var algorithm12 = load(__webpack_require__(56));
-	  var algorithm13 = load(__webpack_require__(50));
-	  var algorithm14 = load(__webpack_require__(51));
+	  var algorithm03 = load(__webpack_require__(55));
+	  var algorithm07 = load(__webpack_require__(56));
+	  var algorithm12 = load(__webpack_require__(57));
+	  var algorithm13 = load(__webpack_require__(51));
+	  var algorithm14 = load(__webpack_require__(52));
 
-	  var latex = __webpack_require__(46);
+	  var latex = __webpack_require__(47);
 
 	  /**
 	   * Test whether value x is smaller than y.
@@ -11468,12 +11629,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var DimensionError = __webpack_require__(33);
+	var DimensionError = __webpack_require__(34);
 
 	function factory (type, config, load, typed) {
 
@@ -11599,12 +11760,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var DimensionError = __webpack_require__(33);
+	var DimensionError = __webpack_require__(34);
 
 	function factory (type, config, load, typed) {
 
@@ -11729,7 +11890,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -11845,25 +12006,25 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var nearlyEqual = __webpack_require__(19).nearlyEqual;
-	var bigNearlyEqual = __webpack_require__(41);
+	var nearlyEqual = __webpack_require__(20).nearlyEqual;
+	var bigNearlyEqual = __webpack_require__(42);
 
 	function factory (type, config, load, typed) {
 	  
-	  var matrix = load(__webpack_require__(44));
+	  var matrix = load(__webpack_require__(45));
 
-	  var algorithm03 = load(__webpack_require__(54));
-	  var algorithm07 = load(__webpack_require__(55));
-	  var algorithm12 = load(__webpack_require__(56));
-	  var algorithm13 = load(__webpack_require__(50));
-	  var algorithm14 = load(__webpack_require__(51));
+	  var algorithm03 = load(__webpack_require__(55));
+	  var algorithm07 = load(__webpack_require__(56));
+	  var algorithm12 = load(__webpack_require__(57));
+	  var algorithm13 = load(__webpack_require__(51));
+	  var algorithm14 = load(__webpack_require__(52));
 
-	  var latex = __webpack_require__(46);
+	  var latex = __webpack_require__(47);
 
 	  /**
 	   * Test whether value x is larger than y.
@@ -12030,12 +12191,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var util = __webpack_require__(28);
+	var util = __webpack_require__(29);
 
 	var string = util.string;
 	var object = util.object;
@@ -12045,9 +12206,9 @@ var Clustergrammer =
 
 	function factory (type, config, load) {
 
-	  var DenseMatrix = load(__webpack_require__(37));
+	  var DenseMatrix = load(__webpack_require__(38));
 
-	  var smaller = load(__webpack_require__(53));
+	  var smaller = load(__webpack_require__(54));
 
 	  function ImmutableDenseMatrix(data, datatype) {
 	    if (!(this instanceof ImmutableDenseMatrix))
@@ -12269,13 +12430,13 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var clone = __webpack_require__(15).clone;
-	var isInteger = __webpack_require__(19).isInteger;
+	var clone = __webpack_require__(16).clone;
+	var isInteger = __webpack_require__(20).isInteger;
 
 	function factory (type) {
 	  
@@ -12558,12 +12719,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var number = __webpack_require__(19);
+	var number = __webpack_require__(20);
 
 	function factory (type, config, load, typed) {
 	  /**
@@ -12880,7 +13041,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -12950,7 +13111,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13017,16 +13178,16 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var isInteger = __webpack_require__(19).isInteger;
-	var resize = __webpack_require__(29).resize;
+	var isInteger = __webpack_require__(20).isInteger;
+	var resize = __webpack_require__(30).resize;
 
 	function factory (type, config, load, typed) {
-	  var matrix = load(__webpack_require__(44));
+	  var matrix = load(__webpack_require__(45));
 
 	  /**
 	   * Create a matrix filled with zeros. The created matrix can have one or
@@ -13157,11 +13318,11 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var get_filter_default_state = __webpack_require__(6);
+	var get_filter_default_state = __webpack_require__(7);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function get_subset_views(params, views, requested_view) {
@@ -13244,7 +13405,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 	module.exports = function ini_sidebar_params(params) {
@@ -13286,7 +13447,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -13317,22 +13478,22 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var ini_label_params = __webpack_require__(68);
-	var set_viz_wrapper_size = __webpack_require__(69);
-	var get_svg_dim = __webpack_require__(71);
-	var calc_label_params = __webpack_require__(72);
-	var calc_clust_width = __webpack_require__(73);
-	var calc_clust_height = __webpack_require__(74);
-	var calc_val_max = __webpack_require__(75);
-	var calc_matrix_params = __webpack_require__(76);
-	var set_zoom_params = __webpack_require__(81);
-	var calc_default_fs = __webpack_require__(83);
+	var ini_label_params = __webpack_require__(69);
+	var set_viz_wrapper_size = __webpack_require__(70);
+	var get_svg_dim = __webpack_require__(72);
+	var calc_label_params = __webpack_require__(73);
+	var calc_clust_width = __webpack_require__(74);
+	var calc_clust_height = __webpack_require__(75);
+	var calc_val_max = __webpack_require__(76);
+	var calc_matrix_params = __webpack_require__(77);
+	var set_zoom_params = __webpack_require__(82);
+	var calc_default_fs = __webpack_require__(84);
 	var utils = __webpack_require__(2);
-	var get_available_filters = __webpack_require__(5);
-	var make_cat_params = __webpack_require__(84);
+	var get_available_filters = __webpack_require__(6);
+	var make_cat_params = __webpack_require__(85);
 
 	module.exports = function calc_viz_params(params, predefined_cat_colors = true) {
 
@@ -13494,7 +13655,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -13528,10 +13689,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_viz_dimensions = __webpack_require__(70);
+	var calc_viz_dimensions = __webpack_require__(71);
 
 	module.exports = function set_viz_wrapper_size(params) {
 
@@ -13551,7 +13712,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_viz_dimensions(params) {
@@ -13601,7 +13762,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 	module.exports = function get_svg_dim(params) {
@@ -13615,7 +13776,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_label_params(viz) {
@@ -13636,7 +13797,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_clust_width(viz) {
@@ -13675,7 +13836,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_clust_height(viz) {
@@ -13692,7 +13853,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -13715,11 +13876,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var ini_matrix_params = __webpack_require__(77);
-	var calc_downsampled_levels = __webpack_require__(79);
+	var ini_matrix_params = __webpack_require__(78);
+	var calc_downsampled_levels = __webpack_require__(80);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function calc_matrix_params(params) {
@@ -13766,11 +13927,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var initialize_matrix = __webpack_require__(78);
+	var initialize_matrix = __webpack_require__(79);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function ini_matrix_params(params) {
@@ -13900,7 +14061,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -13980,10 +14141,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_downsampled_matrix = __webpack_require__(80);
+	var calc_downsampled_matrix = __webpack_require__(81);
 
 	module.exports = function calc_downsampled_levels(params) {
 
@@ -14083,7 +14244,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -14171,10 +14332,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_zoom_switching = __webpack_require__(82);
+	var calc_zoom_switching = __webpack_require__(83);
 
 	module.exports = function set_zoom_params(params) {
 
@@ -14192,7 +14353,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_zoom_switching(viz) {
@@ -14213,7 +14374,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_default_fs(params) {
@@ -14233,13 +14394,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_cat_params = __webpack_require__(85);
+	var calc_cat_params = __webpack_require__(86);
 	var utils = __webpack_require__(2);
-	var colors = __webpack_require__(86);
-	var check_if_value_cats = __webpack_require__(87);
+	var colors = __webpack_require__(87);
+	var check_if_value_cats = __webpack_require__(88);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_cat_params(params, viz, predefined_cat_colors = true) {
@@ -14379,7 +14540,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -14439,7 +14600,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 	// colors from http://graphicdesign.stackexchange.com/revisions/3815/8
@@ -14473,7 +14634,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -14545,7 +14706,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports) {
 
 	module.exports = function ini_zoom_info() {
@@ -14560,25 +14721,25 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var generate_matrix = __webpack_require__(90);
-	var make_row_label_container = __webpack_require__(101);
-	var make_col_label_container = __webpack_require__(133);
-	var generate_super_labels = __webpack_require__(141);
-	var spillover = __webpack_require__(142);
-	var initialize_resizing = __webpack_require__(153);
-	var ini_doubleclick = __webpack_require__(163);
-	var make_col_cat = __webpack_require__(185);
-	var make_row_cat = __webpack_require__(190);
-	var trim_text = __webpack_require__(148);
-	var make_row_dendro = __webpack_require__(191);
-	var make_col_dendro = __webpack_require__(192);
-	var build_dendro_sliders = __webpack_require__(193);
+	var generate_matrix = __webpack_require__(91);
+	var make_row_label_container = __webpack_require__(102);
+	var make_col_label_container = __webpack_require__(134);
+	var generate_super_labels = __webpack_require__(142);
+	var spillover = __webpack_require__(143);
+	var initialize_resizing = __webpack_require__(154);
+	var ini_doubleclick = __webpack_require__(164);
+	var make_col_cat = __webpack_require__(186);
+	var make_row_cat = __webpack_require__(191);
+	var trim_text = __webpack_require__(149);
+	var make_row_dendro = __webpack_require__(192);
+	var make_col_dendro = __webpack_require__(193);
+	var build_dendro_sliders = __webpack_require__(194);
 	// var build_tree_icon = require('./menus/build_tree_icon');
 	// var build_filter_icon = require('./menus/build_filter_icon');
-	var make_row_dendro_spillover = __webpack_require__(196);
+	var make_row_dendro_spillover = __webpack_require__(197);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_viz(cgm) {
@@ -14681,13 +14842,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var draw_gridlines = __webpack_require__(91);
-	var add_click_hlight = __webpack_require__(92);
-	var make_matrix_rows = __webpack_require__(93);
+	var draw_gridlines = __webpack_require__(92);
+	var add_click_hlight = __webpack_require__(93);
+	var make_matrix_rows = __webpack_require__(94);
 
 	module.exports = function (params, svg_elem) {
 	  var network_data = params.network_data;
@@ -14771,7 +14932,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports) {
 
 	// var grid_lines_viz = require('./grid_lines_viz');
@@ -14822,7 +14983,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params, clicked_rect) {
@@ -14882,11 +15043,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_simple_rows = __webpack_require__(94);
-	var d3_tip_custom = __webpack_require__(100);
+	var make_simple_rows = __webpack_require__(95);
+	var d3_tip_custom = __webpack_require__(101);
 	var underscore = __webpack_require__(3);
 
 	// current matrix can change with downsampling
@@ -14960,16 +15121,16 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* eslint-disable */
 
-	var draw_up_tile = __webpack_require__(95);
-	var draw_dn_tile = __webpack_require__(96);
-	var mouseover_tile = __webpack_require__(97);
-	var mouseout_tile = __webpack_require__(98);
-	var fine_position_tile = __webpack_require__(99);
+	var draw_up_tile = __webpack_require__(96);
+	var draw_dn_tile = __webpack_require__(97);
+	var mouseover_tile = __webpack_require__(98);
+	var mouseout_tile = __webpack_require__(99);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_simple_rows(params, inst_data, tip, row_selection, ds_level = -1) {
@@ -15146,7 +15307,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 	module.exports = function draw_up_tile(params) {
@@ -15162,7 +15323,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 	module.exports = function draw_dn_tile(params) {
@@ -15178,7 +15339,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -15236,7 +15397,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -15258,7 +15419,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports) {
 
 	module.exports = function fine_position_tile(params, d) {
@@ -15278,7 +15439,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports) {
 
 	module.exports = function d3_tip_custom() {
@@ -15634,10 +15795,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_row_labels = __webpack_require__(102);
+	var make_row_labels = __webpack_require__(103);
 
 	module.exports = function make_row_label_container(cgm, text_delay) {
 
@@ -15672,13 +15833,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var add_row_click_hlight = __webpack_require__(103);
-	var row_reorder = __webpack_require__(104);
-	var make_row_tooltips = __webpack_require__(132);
+	var add_row_click_hlight = __webpack_require__(104);
+	var row_reorder = __webpack_require__(105);
+	var make_row_tooltips = __webpack_require__(133);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_row_labels(cgm, row_names = 'all', text_delay = 0) {
@@ -15785,7 +15946,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params, clicked_row, id_clicked_row) {
@@ -15817,14 +15978,14 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var reposition_tile_highlight = __webpack_require__(105);
-	var toggle_dendro_view = __webpack_require__(106);
-	var ini_zoom_info = __webpack_require__(88);
-	var get_previous_zoom = __webpack_require__(131);
-	var calc_downsampled_levels = __webpack_require__(79);
+	var reposition_tile_highlight = __webpack_require__(106);
+	var toggle_dendro_view = __webpack_require__(107);
+	var ini_zoom_info = __webpack_require__(89);
+	var get_previous_zoom = __webpack_require__(132);
+	var calc_downsampled_levels = __webpack_require__(80);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function row_reorder(cgm, row_selection, inst_row) {
@@ -15947,7 +16108,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params) {
@@ -15988,10 +16149,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_dendro_triangles = __webpack_require__(107);
+	var make_dendro_triangles = __webpack_require__(108);
 
 	module.exports = function toggle_dendro_view(cgm, inst_rc, wait_time = 1500) {
 
@@ -16033,15 +16194,15 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_row_dendro_triangles = __webpack_require__(108);
-	var calc_col_dendro_triangles = __webpack_require__(109);
-	var dendro_group_highlight = __webpack_require__(110);
-	var d3_tip_custom = __webpack_require__(100);
-	var make_dendro_crop_buttons = __webpack_require__(112);
-	var make_cat_breakdown_graph = __webpack_require__(115);
+	var calc_row_dendro_triangles = __webpack_require__(109);
+	var calc_col_dendro_triangles = __webpack_require__(110);
+	var dendro_group_highlight = __webpack_require__(111);
+	var d3_tip_custom = __webpack_require__(101);
+	var make_dendro_crop_buttons = __webpack_require__(113);
+	var make_cat_breakdown_graph = __webpack_require__(116);
 
 	module.exports = function make_dendro_triangles(cgm, inst_rc, is_change_group = false) {
 
@@ -16248,7 +16409,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -16306,7 +16467,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -16362,10 +16523,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var dendro_shade_bars = __webpack_require__(111);
+	var dendro_shade_bars = __webpack_require__(112);
 
 	module.exports = function dendro_group_highlight(params, inst_selection, inst_data, inst_rc) {
 
@@ -16420,7 +16581,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports) {
 
 	module.exports = function dendro_shade_bars(params, inst_selection, inst_rc, inst_data) {
@@ -16450,15 +16611,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_row_dendro_triangles = __webpack_require__(108);
-	var calc_col_dendro_triangles = __webpack_require__(109);
-	var d3_tip_custom = __webpack_require__(100);
-	var dendro_group_highlight = __webpack_require__(110);
-	var run_dendro_filter = __webpack_require__(113);
-	var zoom_crop_triangles = __webpack_require__(114);
+	var calc_row_dendro_triangles = __webpack_require__(109);
+	var calc_col_dendro_triangles = __webpack_require__(110);
+	var d3_tip_custom = __webpack_require__(101);
+	var dendro_group_highlight = __webpack_require__(111);
+	var run_dendro_filter = __webpack_require__(114);
+	var zoom_crop_triangles = __webpack_require__(115);
 
 	module.exports = function make_dendro_crop_buttons(cgm, inst_rc) {
 
@@ -16749,7 +16910,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports) {
 
 	module.exports = function run_dendro_filter(cgm, d, inst_rc) {
@@ -16790,7 +16951,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports) {
 
 	module.exports = function zoom_crop_triangles(params, zoom_info, inst_rc) {
@@ -16833,13 +16994,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_cat_cluster_breakdown = __webpack_require__(116);
+	var calc_cat_cluster_breakdown = __webpack_require__(117);
 	var underscore = __webpack_require__(3);
-	var cat_breakdown_bars = __webpack_require__(129);
-	var cat_breakdown_values = __webpack_require__(130);
+	var cat_breakdown_bars = __webpack_require__(130);
+	var cat_breakdown_values = __webpack_require__(131);
 
 	module.exports = function make_cat_breakdown_graph(params, inst_rc, inst_data, dendro_info, selector, tooltip = false) {
 
@@ -16999,10 +17160,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var binom_test = __webpack_require__(117);
+	var binom_test = __webpack_require__(118);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function calc_cat_cluster_breakdown(params, inst_data, inst_rc) {
@@ -17205,7 +17366,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -17213,11 +17374,11 @@ var Clustergrammer =
 	// Create a new, empty math.js instance
 	// It will only contain methods `import` and `config`
 	// math.import(require('mathjs/lib/type/fraction'));
-	var p_dict = __webpack_require__(118);
-	var core = __webpack_require__(13);
+	var p_dict = __webpack_require__(119);
+	var core = __webpack_require__(14);
 	var math = core.create();
 
-	math.import(__webpack_require__(119));
+	math.import(__webpack_require__(120));
 
 	module.exports = function binom_test(actual_k, n, p) {
 
@@ -17292,7 +17453,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -17301,16 +17462,16 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var deepMap = __webpack_require__(120);
+	var deepMap = __webpack_require__(121);
 
 	function factory (type, config, load, typed) {
-	  var gamma = load(__webpack_require__(121));
-	  var latex = __webpack_require__(46);
+	  var gamma = load(__webpack_require__(122));
+	  var latex = __webpack_require__(47);
 
 	  /**
 	   * Compute the factorial of a value
@@ -17368,7 +17529,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -17399,17 +17560,17 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var deepMap = __webpack_require__(120);
-	var isInteger = __webpack_require__(19).isInteger;
+	var deepMap = __webpack_require__(121);
+	var isInteger = __webpack_require__(20).isInteger;
 
 	function factory (type, config, load, typed) {
-	  var multiply = load(__webpack_require__(122));
-	  var pow = load(__webpack_require__(125));
+	  var multiply = load(__webpack_require__(123));
+	  var pow = load(__webpack_require__(126));
 
 	  /**
 	   * Compute the gamma function of a value using Lanczos approximation for
@@ -17607,24 +17768,24 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var extend = __webpack_require__(15).extend;
-	var array = __webpack_require__(29);
+	var extend = __webpack_require__(16).extend;
+	var array = __webpack_require__(30);
 
 	function factory (type, config, load, typed) {
-	  var latex = __webpack_require__(46);
+	  var latex = __webpack_require__(47);
 
-	  var matrix = load(__webpack_require__(44));
-	  var addScalar = load(__webpack_require__(45));
-	  var multiplyScalar = load(__webpack_require__(123));
-	  var equalScalar = load(__webpack_require__(40));
+	  var matrix = load(__webpack_require__(45));
+	  var addScalar = load(__webpack_require__(46));
+	  var multiplyScalar = load(__webpack_require__(124));
+	  var equalScalar = load(__webpack_require__(41));
 
-	  var algorithm11 = load(__webpack_require__(124));
-	  var algorithm14 = load(__webpack_require__(51));
+	  var algorithm11 = load(__webpack_require__(125));
+	  var algorithm14 = load(__webpack_require__(52));
 	  
 	  var DenseMatrix = type.DenseMatrix;
 	  var SparseMatrix = type.SparseMatrix;
@@ -18583,7 +18744,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -18646,14 +18807,14 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function factory (type, config, load, typed) {
 
-	  var equalScalar = load(__webpack_require__(40));
+	  var equalScalar = load(__webpack_require__(41));
 
 	  var SparseMatrix = type.SparseMatrix;
 
@@ -18761,21 +18922,21 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var isInteger = __webpack_require__(19).isInteger;
-	var size = __webpack_require__(29).size;
+	var isInteger = __webpack_require__(20).isInteger;
+	var size = __webpack_require__(30).size;
 
 	function factory (type, config, load, typed) {
-	  var latex = __webpack_require__(46);
-	  var eye = load(__webpack_require__(126));
-	  var multiply = load(__webpack_require__(122));
-	  var matrix = load(__webpack_require__(44));
-	  var fraction = load(__webpack_require__(127));
-	  var number = load(__webpack_require__(128));
+	  var latex = __webpack_require__(47);
+	  var eye = load(__webpack_require__(127));
+	  var multiply = load(__webpack_require__(123));
+	  var matrix = load(__webpack_require__(45));
+	  var fraction = load(__webpack_require__(128));
+	  var number = load(__webpack_require__(129));
 
 	  /**
 	   * Calculates the power of x to y, `x ^ y`.
@@ -18968,17 +19129,17 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var array = __webpack_require__(29);
-	var isInteger = __webpack_require__(19).isInteger;
+	var array = __webpack_require__(30);
+	var isInteger = __webpack_require__(20).isInteger;
 
 	function factory (type, config, load, typed) {
 	  
-	  var matrix = load(__webpack_require__(44));
+	  var matrix = load(__webpack_require__(45));
 	  
 	  /**
 	   * Create a 2-dimensional identity matrix with size m x n or n x n.
@@ -19118,12 +19279,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var deepMap = __webpack_require__(120);
+	var deepMap = __webpack_require__(121);
 
 	function factory (type, config, load, typed) {
 	  /**
@@ -19193,12 +19354,12 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var deepMap = __webpack_require__(120);
+	var deepMap = __webpack_require__(121);
 
 	function factory (type, config, load, typed) {
 	  /**
@@ -19278,7 +19439,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports) {
 
 	module.exports = function cat_breakdown_bars(params, cat_data, cat_graph_group, title_height, bars_index, max_bars, cat_bar_groups) {
@@ -19342,7 +19503,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports) {
 
 	module.exports = function cat_breakdown_values(params, cat_graph_group, cat_bar_groups, num_nodes_index, is_downsampled, count_offset, bars_index, cluster_total) {
@@ -19444,7 +19605,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports) {
 
 	module.exports = function get_previous_zoom(params) {
@@ -19472,10 +19633,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var d3_tip_custom = __webpack_require__(100);
+	var d3_tip_custom = __webpack_require__(101);
 
 	module.exports = function make_row_tooltips(params) {
 
@@ -19529,15 +19690,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var add_col_click_hlight = __webpack_require__(134);
-	var col_reorder = __webpack_require__(135);
-	var row_reorder = __webpack_require__(104);
-	var make_col_tooltips = __webpack_require__(139);
-	var col_viz_aid_triangle = __webpack_require__(140);
+	var add_col_click_hlight = __webpack_require__(135);
+	var col_reorder = __webpack_require__(136);
+	var row_reorder = __webpack_require__(105);
+	var make_col_tooltips = __webpack_require__(140);
+	var col_viz_aid_triangle = __webpack_require__(141);
 
 	module.exports = function make_col_label_container(cgm, text_delay = 0) {
 
@@ -19667,7 +19828,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params, clicked_col, id_clicked_col) {
@@ -19712,16 +19873,16 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// var utils = require('../Utils_clust');
-	var reposition_tile_highlight = __webpack_require__(105);
-	var toggle_dendro_view = __webpack_require__(106);
-	var show_visible_area = __webpack_require__(136);
-	var ini_zoom_info = __webpack_require__(88);
-	var get_previous_zoom = __webpack_require__(131);
-	var calc_downsampled_levels = __webpack_require__(79);
+	var reposition_tile_highlight = __webpack_require__(106);
+	var toggle_dendro_view = __webpack_require__(107);
+	var show_visible_area = __webpack_require__(137);
+	var ini_zoom_info = __webpack_require__(89);
+	var get_previous_zoom = __webpack_require__(132);
+	var calc_downsampled_levels = __webpack_require__(80);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function col_reorder(cgm, col_selection, inst_term) {
@@ -19840,13 +20001,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var find_viz_rows = __webpack_require__(137);
-	var make_matrix_rows = __webpack_require__(93);
-	var make_row_labels = __webpack_require__(102);
-	var make_row_visual_aid_triangles = __webpack_require__(138);
+	var find_viz_rows = __webpack_require__(138);
+	var make_matrix_rows = __webpack_require__(94);
+	var make_row_labels = __webpack_require__(103);
+	var make_row_visual_aid_triangles = __webpack_require__(139);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function show_visible_area(cgm, zooming_stopped = false, zooming_out = false, make_all_rows = false) {
@@ -20045,7 +20206,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports) {
 
 	module.exports = function find_viz_rows(params, viz_area) {
@@ -20089,7 +20250,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports) {
 
 	module.exports = function make_row_visual_aid_triangles(params) {
@@ -20109,10 +20270,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var d3_tip_custom = __webpack_require__(100);
+	var d3_tip_custom = __webpack_require__(101);
 
 	module.exports = function make_col_tooltips(params) {
 
@@ -20150,7 +20311,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports) {
 
 	module.exports = function col_viz_aid_triangle(params) {
@@ -20167,7 +20328,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params) {
@@ -20209,13 +20370,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var get_cat_title = __webpack_require__(143);
-	var ini_cat_reorder = __webpack_require__(144);
-	var make_row_cat_super_labels = __webpack_require__(152);
-	var make_dendro_crop_buttons = __webpack_require__(112);
+	var get_cat_title = __webpack_require__(144);
+	var ini_cat_reorder = __webpack_require__(145);
+	var make_row_cat_super_labels = __webpack_require__(153);
+	var make_dendro_crop_buttons = __webpack_require__(113);
 
 	module.exports = function Spillover(cgm) {
 
@@ -20311,7 +20472,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports) {
 
 	module.exports = function get_cat_title(viz, inst_cat, inst_rc) {
@@ -20331,10 +20492,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var all_reorder = __webpack_require__(145);
+	var all_reorder = __webpack_require__(146);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function ini_cat_reorder(cgm) {
@@ -20366,15 +20527,15 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var toggle_dendro_view = __webpack_require__(106);
-	var show_visible_area = __webpack_require__(136);
-	var ini_zoom_info = __webpack_require__(88);
-	var calc_downsampled_levels = __webpack_require__(79);
-	var two_translate_zoom = __webpack_require__(146);
-	var get_previous_zoom = __webpack_require__(131);
+	var toggle_dendro_view = __webpack_require__(107);
+	var show_visible_area = __webpack_require__(137);
+	var ini_zoom_info = __webpack_require__(89);
+	var calc_downsampled_levels = __webpack_require__(80);
+	var two_translate_zoom = __webpack_require__(147);
+	var get_previous_zoom = __webpack_require__(132);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function (cgm, inst_order, inst_rc) {
@@ -20499,14 +20660,14 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var label_constrain_and_trim = __webpack_require__(147);
-	var show_visible_area = __webpack_require__(136);
-	var ini_zoom_info = __webpack_require__(88);
-	var toggle_grid_lines = __webpack_require__(151);
+	var label_constrain_and_trim = __webpack_require__(148);
+	var show_visible_area = __webpack_require__(137);
+	var ini_zoom_info = __webpack_require__(89);
+	var toggle_grid_lines = __webpack_require__(152);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function two_translate_zoom(cgm, pan_dx, pan_dy, fin_zoom) {
@@ -20712,12 +20873,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var trim_text = __webpack_require__(148);
-	var constrain_font_size = __webpack_require__(149);
+	var trim_text = __webpack_require__(149);
+	var constrain_font_size = __webpack_require__(150);
 
 	module.exports = function label_constrain_and_trim(params) {
 
@@ -20744,7 +20905,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports) {
 
 	
@@ -20855,10 +21016,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_real_font_size = __webpack_require__(150);
+	var calc_real_font_size = __webpack_require__(151);
 
 	module.exports = function constrain_font_size(params) {
 
@@ -20922,7 +21083,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports) {
 
 	module.exports = function calc_real_font_size(params) {
@@ -20941,7 +21102,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports) {
 
 	module.exports = function toggle_grid_lines(params) {
@@ -20960,11 +21121,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var get_cat_title = __webpack_require__(143);
-	var d3_tip_custom = __webpack_require__(100);
+	var get_cat_title = __webpack_require__(144);
+	var d3_tip_custom = __webpack_require__(101);
 
 	module.exports = function make_row_cat_super_labels(cgm) {
 
@@ -21103,10 +21264,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var resize_viz = __webpack_require__(154);
+	var resize_viz = __webpack_require__(155);
 
 	module.exports = function initialize_resizing(cgm) {
 
@@ -21199,41 +21360,41 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var run_zoom = __webpack_require__(155);
-	var ini_doubleclick = __webpack_require__(163);
-	var reset_zoom = __webpack_require__(164);
-	var resize_dendro = __webpack_require__(165);
-	var resize_super_labels = __webpack_require__(166);
-	var resize_spillover = __webpack_require__(167);
-	var resize_borders = __webpack_require__(168);
-	var resize_row_labels = __webpack_require__(169);
-	var resize_highlights = __webpack_require__(170);
-	var resize_row_viz = __webpack_require__(171);
-	var resize_col_labels = __webpack_require__(172);
-	var resize_col_text = __webpack_require__(173);
-	var resize_col_triangle = __webpack_require__(174);
-	var resize_col_hlight = __webpack_require__(175);
-	var recalc_params_for_resize = __webpack_require__(176);
-	var resize_row_tiles = __webpack_require__(177);
-	var resize_label_bars = __webpack_require__(178);
-	var label_constrain_and_trim = __webpack_require__(147);
-	var make_dendro_triangles = __webpack_require__(107);
-	var toggle_dendro_view = __webpack_require__(106);
-	var show_visible_area = __webpack_require__(136);
-	var calc_viz_dimensions = __webpack_require__(70);
-	var position_play_button = __webpack_require__(179);
-	var make_row_cat_super_labels = __webpack_require__(152);
-	var ini_cat_reorder = __webpack_require__(144);
-	var position_dendro_slider = __webpack_require__(180);
-	var position_tree_icon = __webpack_require__(181);
-	var position_filter_icon = __webpack_require__(182);
-	var position_tree_menu = __webpack_require__(183);
-	var ini_zoom_info = __webpack_require__(88);
-	var grid_lines_viz = __webpack_require__(184);
+	var run_zoom = __webpack_require__(156);
+	var ini_doubleclick = __webpack_require__(164);
+	var reset_zoom = __webpack_require__(165);
+	var resize_dendro = __webpack_require__(166);
+	var resize_super_labels = __webpack_require__(167);
+	var resize_spillover = __webpack_require__(168);
+	var resize_borders = __webpack_require__(169);
+	var resize_row_labels = __webpack_require__(170);
+	var resize_highlights = __webpack_require__(171);
+	var resize_row_viz = __webpack_require__(172);
+	var resize_col_labels = __webpack_require__(173);
+	var resize_col_text = __webpack_require__(174);
+	var resize_col_triangle = __webpack_require__(175);
+	var resize_col_hlight = __webpack_require__(176);
+	var recalc_params_for_resize = __webpack_require__(177);
+	var resize_row_tiles = __webpack_require__(178);
+	var resize_label_bars = __webpack_require__(179);
+	var label_constrain_and_trim = __webpack_require__(148);
+	var make_dendro_triangles = __webpack_require__(108);
+	var toggle_dendro_view = __webpack_require__(107);
+	var show_visible_area = __webpack_require__(137);
+	var calc_viz_dimensions = __webpack_require__(71);
+	var position_play_button = __webpack_require__(180);
+	var make_row_cat_super_labels = __webpack_require__(153);
+	var ini_cat_reorder = __webpack_require__(145);
+	var position_dendro_slider = __webpack_require__(181);
+	var position_tree_icon = __webpack_require__(182);
+	var position_filter_icon = __webpack_require__(183);
+	var position_tree_menu = __webpack_require__(184);
+	var ini_zoom_info = __webpack_require__(89);
+	var grid_lines_viz = __webpack_require__(185);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function resize_viz(cgm) {
@@ -21394,12 +21555,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var run_transformation = __webpack_require__(156);
-	var zoom_rules_y = __webpack_require__(161);
-	var zoom_rules_x = __webpack_require__(162);
+	var run_transformation = __webpack_require__(157);
+	var zoom_rules_y = __webpack_require__(162);
+	var zoom_rules_x = __webpack_require__(163);
 
 	module.exports = function zoomed(cgm) {
 
@@ -21434,16 +21595,16 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var constrain_font_size = __webpack_require__(149);
-	var show_visible_area = __webpack_require__(136);
-	var resize_label_val_bars = __webpack_require__(157);
-	var zoom_crop_triangles = __webpack_require__(114);
-	var get_previous_zoom = __webpack_require__(131);
-	var run_when_zoom_stopped = __webpack_require__(158);
-	var check_zoom_stop_status = __webpack_require__(160);
+	var constrain_font_size = __webpack_require__(150);
+	var show_visible_area = __webpack_require__(137);
+	var resize_label_val_bars = __webpack_require__(158);
+	var zoom_crop_triangles = __webpack_require__(115);
+	var get_previous_zoom = __webpack_require__(132);
+	var run_when_zoom_stopped = __webpack_require__(159);
+	var check_zoom_stop_status = __webpack_require__(161);
 
 	module.exports = function run_transformation(cgm) {
 
@@ -21535,7 +21696,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -21569,15 +21730,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var constrain_font_size = __webpack_require__(149);
-	var trim_text = __webpack_require__(148);
-	var num_visible_labels = __webpack_require__(159);
-	var toggle_grid_lines = __webpack_require__(151);
-	var show_visible_area = __webpack_require__(136);
-	var check_zoom_stop_status = __webpack_require__(160);
+	var constrain_font_size = __webpack_require__(150);
+	var trim_text = __webpack_require__(149);
+	var num_visible_labels = __webpack_require__(160);
+	var toggle_grid_lines = __webpack_require__(152);
+	var show_visible_area = __webpack_require__(137);
+	var check_zoom_stop_status = __webpack_require__(161);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function run_when_zoom_stopped(cgm) {
@@ -21657,7 +21818,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports) {
 
 	module.exports = function num_visible_labels(params, inst_rc) {
@@ -21685,7 +21846,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports) {
 
 	module.exports = function check_zoom_stop_status(params) {
@@ -21703,7 +21864,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports) {
 
 	module.exports = function zoom_rules_y(params, zoom_info) {
@@ -21737,7 +21898,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports) {
 
 	module.exports = function zoom_rules_x(params, zoom_info) {
@@ -21781,10 +21942,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var two_translate_zoom = __webpack_require__(146);
+	var two_translate_zoom = __webpack_require__(147);
 
 	module.exports = function ini_doubleclick(cgm) {
 
@@ -21798,7 +21959,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports) {
 
 	module.exports = function (params) {
@@ -21840,7 +22001,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -21948,7 +22109,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_super_labels(params, ini_svg_group, delay_info = false) {
@@ -21988,7 +22149,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_spillover(viz, ini_svg_group, delay_info = false) {
@@ -22106,7 +22267,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_borders(params, svg_group) {
@@ -22134,7 +22295,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -22188,7 +22349,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_highlights(params) {
@@ -22251,7 +22412,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_row_viz(params, ini_svg_group, delay_info = false) {
@@ -22291,7 +22452,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -22346,7 +22507,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -22362,10 +22523,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var col_viz_aid_triangle = __webpack_require__(140);
+	var col_viz_aid_triangle = __webpack_require__(141);
 
 	module.exports = function resize_col_triangle(params, ini_svg_group, delay_info = false) {
 
@@ -22394,7 +22555,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -22429,14 +22590,14 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var get_svg_dim = __webpack_require__(71);
-	var calc_clust_height = __webpack_require__(74);
-	var calc_clust_width = __webpack_require__(73);
-	var calc_default_fs = __webpack_require__(83);
-	var calc_zoom_switching = __webpack_require__(82);
+	var get_svg_dim = __webpack_require__(72);
+	var calc_clust_height = __webpack_require__(75);
+	var calc_clust_width = __webpack_require__(74);
+	var calc_default_fs = __webpack_require__(84);
+	var calc_zoom_switching = __webpack_require__(83);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function recalc_params_for_resize(params) {
@@ -22497,12 +22658,12 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var draw_up_tile = __webpack_require__(95);
-	var draw_dn_tile = __webpack_require__(96);
-	var fine_position_tile = __webpack_require__(99);
+	var draw_up_tile = __webpack_require__(96);
+	var draw_dn_tile = __webpack_require__(97);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function resize_row_tiles(params, svg_group) {
@@ -22561,10 +22722,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var calc_val_max = __webpack_require__(75);
+	var calc_val_max = __webpack_require__(76);
 	// var underscore = require('underscore');
 
 	module.exports = function resize_label_bars(cgm, svg_group) {
@@ -22596,7 +22757,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports) {
 
 	module.exports = function position_play_button(params) {
@@ -22614,7 +22775,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports) {
 
 	module.exports = function position_dendro_slider(cgm, inst_rc = 'row') {
@@ -22664,7 +22825,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports) {
 
 	module.exports = function position_tree_icon(cgm) {
@@ -22696,7 +22857,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports) {
 
 	module.exports = function position_filter_icon(cgm) {
@@ -22728,7 +22889,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports) {
 
 	module.exports = function position_tree_menu(cgm) {
@@ -22749,7 +22910,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports) {
 
 	module.exports = function grid_lines_viz(params, duration = 0) {
@@ -22786,15 +22947,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var cat_tooltip_text = __webpack_require__(186);
-	var d3_tip_custom = __webpack_require__(100);
-	var reset_cat_opacity = __webpack_require__(187);
-	var ini_cat_opacity = __webpack_require__(188);
+	var cat_tooltip_text = __webpack_require__(187);
+	var d3_tip_custom = __webpack_require__(101);
+	var reset_cat_opacity = __webpack_require__(188);
+	var ini_cat_opacity = __webpack_require__(189);
 	// var click_filter_cats = require('./click_filter_cats');
-	var get_cat_names = __webpack_require__(189);
+	var get_cat_names = __webpack_require__(190);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_col_cat(cgm) {
@@ -22886,10 +23047,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var get_cat_title = __webpack_require__(143);
+	var get_cat_title = __webpack_require__(144);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function cat_tooltip_text(params, inst_data, inst_selection, inst_rc) {
@@ -22975,7 +23136,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -22998,7 +23159,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports) {
 
 	module.exports = function ini_cat_opacity(viz, inst_rc, cat_rect, inst_cat, updating = false) {
@@ -23059,7 +23220,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
@@ -23082,15 +23243,15 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var cat_tooltip_text = __webpack_require__(186);
-	var d3_tip_custom = __webpack_require__(100);
-	var reset_cat_opacity = __webpack_require__(187);
-	var ini_cat_opacity = __webpack_require__(188);
+	var cat_tooltip_text = __webpack_require__(187);
+	var d3_tip_custom = __webpack_require__(101);
+	var reset_cat_opacity = __webpack_require__(188);
+	var ini_cat_opacity = __webpack_require__(189);
 	// var click_filter_cats = require('./click_filter_cats');
-	var get_cat_names = __webpack_require__(189);
+	var get_cat_names = __webpack_require__(190);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_row_cat(cgm, updating = false) {
@@ -23206,10 +23367,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_dendro_triangles = __webpack_require__(107);
+	var make_dendro_triangles = __webpack_require__(108);
 
 	module.exports = function make_row_dendro(cgm) {
 
@@ -23243,10 +23404,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_dendro_triangles = __webpack_require__(107);
+	var make_dendro_triangles = __webpack_require__(108);
 
 	module.exports = function make_col_dendro(cgm) {
 
@@ -23282,10 +23443,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var build_single_dendro_slider = __webpack_require__(194);
+	var build_single_dendro_slider = __webpack_require__(195);
 
 	module.exports = function build_dendro_sliders(cgm) {
 
@@ -23294,11 +23455,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var change_groups = __webpack_require__(195);
-	var position_dendro_slider = __webpack_require__(180);
+	var change_groups = __webpack_require__(196);
+	var position_dendro_slider = __webpack_require__(181);
 
 	module.exports = function build_single_dendro_slider(cgm, inst_rc) {
 
@@ -23394,10 +23555,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_dendro_triangles = __webpack_require__(107);
+	var make_dendro_triangles = __webpack_require__(108);
 
 	/* Changes the groupings (x- and y-axis color bars).
 	 */
@@ -23417,10 +23578,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_dendro_crop_buttons = __webpack_require__(112);
+	var make_dendro_crop_buttons = __webpack_require__(113);
 
 	module.exports = function make_row_dendro_spillover(cgm) {
 
@@ -23458,25 +23619,25 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* eslint-disable */
 
-	var run_segment = __webpack_require__(198);
-	var play_intro = __webpack_require__(199);
-	var play_zoom = __webpack_require__(201);
-	var play_reset_zoom = __webpack_require__(202);
-	var play_reorder_row = __webpack_require__(204);
-	var play_reorder_buttons = __webpack_require__(205);
-	var play_search = __webpack_require__(207);
-	var play_filter = __webpack_require__(208);
-	var quick_cluster = __webpack_require__(231);
-	var play_groups = __webpack_require__(232);
-	var play_categories = __webpack_require__(233);
-	var play_conclusion = __webpack_require__(234);
-	var toggle_play_button = __webpack_require__(235);
-	var play_menu_button = __webpack_require__(236);
+	var run_segment = __webpack_require__(199);
+	var play_intro = __webpack_require__(200);
+	var play_zoom = __webpack_require__(202);
+	var play_reset_zoom = __webpack_require__(203);
+	var play_reorder_row = __webpack_require__(205);
+	var play_reorder_buttons = __webpack_require__(206);
+	var play_search = __webpack_require__(208);
+	var play_filter = __webpack_require__(209);
+	var quick_cluster = __webpack_require__(232);
+	var play_groups = __webpack_require__(233);
+	var play_categories = __webpack_require__(234);
+	var play_conclusion = __webpack_require__(235);
+	var toggle_play_button = __webpack_require__(236);
+	var play_menu_button = __webpack_require__(237);
 
 	module.exports = function play_demo() {
 
@@ -23536,7 +23697,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports) {
 
 	
@@ -23558,10 +23719,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
+	var demo_text = __webpack_require__(201);
 
 	module.exports = function play_intro() {
 
@@ -23586,7 +23747,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports) {
 
 	module.exports = function demo_text(params, text, read_duration) {
@@ -23618,11 +23779,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var two_translate_zoom = __webpack_require__(146);
+	var demo_text = __webpack_require__(201);
+	var two_translate_zoom = __webpack_require__(147);
 
 	module.exports = function play_zoom() {
 
@@ -23646,12 +23807,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var two_translate_zoom = __webpack_require__(146);
-	var sim_click = __webpack_require__(203);
+	var demo_text = __webpack_require__(201);
+	var two_translate_zoom = __webpack_require__(147);
+	var sim_click = __webpack_require__(204);
 
 	module.exports = function play_reset_zoom() {
 
@@ -23677,7 +23838,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports) {
 
 	module.exports = function sim_click(params, single_double, pos_x, pos_y) {
@@ -23694,11 +23855,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var sim_click = __webpack_require__(203);
+	var demo_text = __webpack_require__(201);
+	var sim_click = __webpack_require__(204);
 
 	module.exports = function play_reorder_row() {
 	  /* eslint-disable */
@@ -23760,11 +23921,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var highlight_sidebar_element = __webpack_require__(206);
+	var demo_text = __webpack_require__(201);
+	var highlight_sidebar_element = __webpack_require__(207);
 
 	module.exports = function play_reorder_buttons() {
 	  /* eslint-disable */
@@ -23800,7 +23961,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports) {
 
 	module.exports = function highlight_sidebar_element(params, highlight_class, duration = 4000) {
@@ -23813,12 +23974,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var highlight_sidebar_element = __webpack_require__(206);
-	var two_translate_zoom = __webpack_require__(146);
+	var demo_text = __webpack_require__(201);
+	var highlight_sidebar_element = __webpack_require__(207);
+	var two_translate_zoom = __webpack_require__(147);
 
 	module.exports = function play_search() {
 
@@ -23863,12 +24024,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var highlight_sidebar_element = __webpack_require__(206);
-	var update_viz_with_view = __webpack_require__(209);
+	var demo_text = __webpack_require__(201);
+	var highlight_sidebar_element = __webpack_require__(207);
+	var update_viz_with_view = __webpack_require__(210);
 
 	module.exports = function play_filter() {
 
@@ -23927,12 +24088,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_network_using_view = __webpack_require__(11);
-	var disable_sidebar = __webpack_require__(210);
-	var update_viz_with_network = __webpack_require__(211);
+	var make_network_using_view = __webpack_require__(12);
+	var disable_sidebar = __webpack_require__(211);
+	var update_viz_with_network = __webpack_require__(212);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function update_viz_with_view(cgm, requested_view) {
@@ -23960,7 +24121,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports) {
 
 	module.exports = function disable_sidebar(params) {
@@ -23970,26 +24131,26 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_params = __webpack_require__(10);
-	var define_enter_exit_delays = __webpack_require__(212);
-	var enter_exit_update = __webpack_require__(213);
-	var initialize_resizing = __webpack_require__(153);
-	var make_col_cat = __webpack_require__(185);
-	var make_row_cat = __webpack_require__(190);
-	var make_row_dendro = __webpack_require__(191);
-	var make_col_dendro = __webpack_require__(192);
-	var ini_sidebar = __webpack_require__(224);
-	var enable_sidebar = __webpack_require__(226);
-	var ini_doubleclick = __webpack_require__(163);
-	var update_reorder_buttons = __webpack_require__(227);
-	var make_row_cat_super_labels = __webpack_require__(152);
-	var modify_row_node_cats = __webpack_require__(228);
-	var run_zoom = __webpack_require__(155);
-	var ds_enter_exit_update = __webpack_require__(230);
-	var make_cat_params = __webpack_require__(84);
+	var make_params = __webpack_require__(11);
+	var define_enter_exit_delays = __webpack_require__(213);
+	var enter_exit_update = __webpack_require__(214);
+	var initialize_resizing = __webpack_require__(154);
+	var make_col_cat = __webpack_require__(186);
+	var make_row_cat = __webpack_require__(191);
+	var make_row_dendro = __webpack_require__(192);
+	var make_col_dendro = __webpack_require__(193);
+	var ini_sidebar = __webpack_require__(225);
+	var enable_sidebar = __webpack_require__(227);
+	var ini_doubleclick = __webpack_require__(164);
+	var update_reorder_buttons = __webpack_require__(228);
+	var make_row_cat_super_labels = __webpack_require__(153);
+	var modify_row_node_cats = __webpack_require__(229);
+	var run_zoom = __webpack_require__(156);
+	var ds_enter_exit_update = __webpack_require__(231);
+	var make_cat_params = __webpack_require__(85);
 
 	module.exports = function update_viz_with_network(cgm, new_network_data) {
 
@@ -24131,7 +24292,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -24196,19 +24357,19 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var reset_size_after_update = __webpack_require__(214);
-	var make_row_label_container = __webpack_require__(101);
-	var make_col_label_container = __webpack_require__(133);
-	var eeu_existing_row = __webpack_require__(215);
-	var exit_components = __webpack_require__(219);
-	var draw_gridlines = __webpack_require__(91);
-	var enter_row_groups = __webpack_require__(220);
-	var resize_containers = __webpack_require__(223);
-	var label_constrain_and_trim = __webpack_require__(147);
-	var d3_tip_custom = __webpack_require__(100);
+	var reset_size_after_update = __webpack_require__(215);
+	var make_row_label_container = __webpack_require__(102);
+	var make_col_label_container = __webpack_require__(134);
+	var eeu_existing_row = __webpack_require__(216);
+	var exit_components = __webpack_require__(220);
+	var draw_gridlines = __webpack_require__(92);
+	var enter_row_groups = __webpack_require__(221);
+	var resize_containers = __webpack_require__(224);
+	var label_constrain_and_trim = __webpack_require__(148);
+	var d3_tip_custom = __webpack_require__(101);
 
 	module.exports = function enter_exit_update(cgm, network_data, delays) {
 
@@ -24305,28 +24466,28 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var utils = __webpack_require__(2);
-	var calc_clust_height = __webpack_require__(74);
-	var get_svg_dim = __webpack_require__(71);
-	var calc_clust_width = __webpack_require__(73);
-	var reset_zoom = __webpack_require__(164);
-	var resize_dendro = __webpack_require__(165);
-	var resize_super_labels = __webpack_require__(166);
-	var resize_spillover = __webpack_require__(167);
-	var resize_row_labels = __webpack_require__(169);
-	var resize_row_viz = __webpack_require__(171);
-	var resize_col_labels = __webpack_require__(172);
-	var resize_col_text = __webpack_require__(173);
-	var resize_col_triangle = __webpack_require__(174);
-	var resize_col_hlight = __webpack_require__(175);
-	var resize_label_bars = __webpack_require__(178);
-	var calc_default_fs = __webpack_require__(83);
-	var calc_zoom_switching = __webpack_require__(82);
+	var calc_clust_height = __webpack_require__(75);
+	var get_svg_dim = __webpack_require__(72);
+	var calc_clust_width = __webpack_require__(74);
+	var reset_zoom = __webpack_require__(165);
+	var resize_dendro = __webpack_require__(166);
+	var resize_super_labels = __webpack_require__(167);
+	var resize_spillover = __webpack_require__(168);
+	var resize_row_labels = __webpack_require__(170);
+	var resize_row_viz = __webpack_require__(172);
+	var resize_col_labels = __webpack_require__(173);
+	var resize_col_text = __webpack_require__(174);
+	var resize_col_triangle = __webpack_require__(175);
+	var resize_col_hlight = __webpack_require__(176);
+	var resize_label_bars = __webpack_require__(179);
+	var calc_default_fs = __webpack_require__(84);
+	var calc_zoom_switching = __webpack_require__(83);
 	// var show_visible_area = require('../zoom/show_visible_area');
-	var ini_zoom_info = __webpack_require__(88);
+	var ini_zoom_info = __webpack_require__(89);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function reset_size_after_update(cgm, duration = 0, delays = null) {
@@ -24495,15 +24656,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var exit_existing_row = __webpack_require__(216);
-	var enter_existing_row = __webpack_require__(217);
-	var update_split_tiles = __webpack_require__(218);
-	var mouseover_tile = __webpack_require__(97);
-	var mouseout_tile = __webpack_require__(98);
-	var fine_position_tile = __webpack_require__(99);
+	var exit_existing_row = __webpack_require__(217);
+	var enter_existing_row = __webpack_require__(218);
+	var update_split_tiles = __webpack_require__(219);
+	var mouseover_tile = __webpack_require__(98);
+	var mouseout_tile = __webpack_require__(99);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	// TODO add tip back to arguments
@@ -24564,7 +24725,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -24609,12 +24770,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var mouseover_tile = __webpack_require__(97);
-	var mouseout_tile = __webpack_require__(98);
-	var fine_position_tile = __webpack_require__(99);
+	var mouseover_tile = __webpack_require__(98);
+	var mouseout_tile = __webpack_require__(99);
+	var fine_position_tile = __webpack_require__(100);
 
 	module.exports = function enter_existing_row(params, delays, duration, cur_row_tiles, tip) {
 
@@ -24652,14 +24813,14 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var draw_up_tile = __webpack_require__(95);
-	var draw_dn_tile = __webpack_require__(96);
-	var mouseover_tile = __webpack_require__(97);
-	var mouseout_tile = __webpack_require__(98);
-	var fine_position_tile = __webpack_require__(99);
+	var draw_up_tile = __webpack_require__(96);
+	var draw_dn_tile = __webpack_require__(97);
+	var mouseover_tile = __webpack_require__(98);
+	var mouseout_tile = __webpack_require__(99);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function update_split_tiles(params, inp_row_data, row_selection, delays, duration, cur_row_tiles, tip) {
@@ -24730,7 +24891,7 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports) {
 
 	module.exports = function exit_components(params, delays, duration) {
@@ -24792,10 +24953,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var enter_new_rows = __webpack_require__(221);
+	var enter_new_rows = __webpack_require__(222);
 
 	module.exports = function enter_row_groups(params, delays, duration, tip) {
 
@@ -24812,13 +24973,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var enter_split_tiles = __webpack_require__(222);
-	var mouseover_tile = __webpack_require__(97);
-	var mouseout_tile = __webpack_require__(98);
-	var fine_position_tile = __webpack_require__(99);
+	var enter_split_tiles = __webpack_require__(223);
+	var mouseover_tile = __webpack_require__(98);
+	var mouseout_tile = __webpack_require__(99);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	// make each row in the clustergram
@@ -24861,12 +25022,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var draw_up_tile = __webpack_require__(95);
-	var draw_dn_tile = __webpack_require__(96);
-	var fine_position_tile = __webpack_require__(99);
+	var draw_up_tile = __webpack_require__(96);
+	var draw_dn_tile = __webpack_require__(97);
+	var fine_position_tile = __webpack_require__(100);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function enter_split_tiles(params, inp_row_data, row_selection, tip, delays, duration, tile) {
@@ -24957,7 +25118,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports) {
 
 	module.exports = function resize_containers(params) {
@@ -24976,15 +25137,15 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* eslint-disable */
 
-	var change_groups = __webpack_require__(195);
-	var all_reorder = __webpack_require__(145);
-	var ini_cat_reorder = __webpack_require__(144);
-	var run_row_search = __webpack_require__(225);
+	var change_groups = __webpack_require__(196);
+	var all_reorder = __webpack_require__(146);
+	var ini_cat_reorder = __webpack_require__(145);
+	var run_row_search = __webpack_require__(226);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function ini_sidebar(cgm) {
@@ -25081,10 +25242,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var two_translate_zoom = __webpack_require__(146);
+	var two_translate_zoom = __webpack_require__(147);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function run_row_search(cgm, search_term, entities) {
@@ -25126,7 +25287,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports) {
 
 	module.exports = function enable_sidebar(params) {
@@ -25160,7 +25321,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -25182,10 +25343,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var remove_node_cats = __webpack_require__(229);
+	var remove_node_cats = __webpack_require__(230);
 	var utils = __webpack_require__(2);
 	var underscore = __webpack_require__(3);
 
@@ -25280,7 +25441,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -25302,13 +25463,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var reset_size_after_update = __webpack_require__(214);
-	var make_col_label_container = __webpack_require__(133);
-	var show_visible_area = __webpack_require__(136);
-	var resize_containers = __webpack_require__(223);
+	var reset_size_after_update = __webpack_require__(215);
+	var make_col_label_container = __webpack_require__(134);
+	var show_visible_area = __webpack_require__(137);
+	var resize_containers = __webpack_require__(224);
 
 	module.exports = function ds_enter_exit_update(cgm) {
 
@@ -25364,10 +25525,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var sim_click = __webpack_require__(203);
+	var sim_click = __webpack_require__(204);
 
 	module.exports = function quick_cluster() {
 	  /* eslint-disable */
@@ -25422,12 +25583,12 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var highlight_sidebar_element = __webpack_require__(206);
-	var change_groups = __webpack_require__(195);
+	var demo_text = __webpack_require__(201);
+	var highlight_sidebar_element = __webpack_require__(207);
+	var change_groups = __webpack_require__(196);
 
 	module.exports = function play_groups() {
 	  /* eslint-disable */
@@ -25463,11 +25624,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var sim_click = __webpack_require__(203);
+	var demo_text = __webpack_require__(201);
+	var sim_click = __webpack_require__(204);
 
 	module.exports = function play_category() {
 	  /* eslint-disable */
@@ -25515,11 +25676,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var toggle_play_button = __webpack_require__(235);
+	var demo_text = __webpack_require__(201);
+	var toggle_play_button = __webpack_require__(236);
 
 	module.exports = function play_conclusion() {
 
@@ -25554,7 +25715,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports) {
 
 	module.exports = function toggle_play_button(params, show) {
@@ -25569,11 +25730,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var demo_text = __webpack_require__(200);
-	var sim_click = __webpack_require__(203);
+	var demo_text = __webpack_require__(201);
+	var sim_click = __webpack_require__(204);
 
 	module.exports = function play_menu_button() {
 	  /* eslint-disable */
@@ -25648,11 +25809,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_play_button = __webpack_require__(238);
-	var make_demo_text_containers = __webpack_require__(239);
+	var make_play_button = __webpack_require__(239);
+	var make_demo_text_containers = __webpack_require__(240);
 
 	module.exports = function ini_demo() {
 
@@ -25666,10 +25827,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var position_play_button = __webpack_require__(179);
+	var position_play_button = __webpack_require__(180);
 
 	module.exports = function make_play_button(cgm) {
 
@@ -25708,7 +25869,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports) {
 
 	module.exports = function make_demo_text_containers(params, demo_text_size) {
@@ -25747,11 +25908,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var filter_network_using_new_nodes = __webpack_require__(12);
-	var update_viz_with_network = __webpack_require__(211);
+	var filter_network_using_new_nodes = __webpack_require__(13);
+	var update_viz_with_network = __webpack_require__(212);
 
 	module.exports = function filter_viz_using_nodes(new_nodes) {
 
@@ -25760,11 +25921,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var filter_network_using_new_nodes = __webpack_require__(12);
-	var update_viz_with_network = __webpack_require__(211);
+	var filter_network_using_new_nodes = __webpack_require__(13);
+	var update_viz_with_network = __webpack_require__(212);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function filter_viz_using_names(names, external_cgm = false) {
@@ -25828,13 +25989,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_row_cat = __webpack_require__(190);
-	var calc_viz_params = __webpack_require__(67);
-	var resize_viz = __webpack_require__(154);
-	var modify_row_node_cats = __webpack_require__(228);
+	var make_row_cat = __webpack_require__(191);
+	var calc_viz_params = __webpack_require__(68);
+	var resize_viz = __webpack_require__(155);
+	var modify_row_node_cats = __webpack_require__(229);
 
 	module.exports = function update_cats(cgm, cat_data) {
 
@@ -25864,14 +26025,14 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_row_cat = __webpack_require__(190);
-	var calc_viz_params = __webpack_require__(67);
-	var resize_viz = __webpack_require__(154);
-	var modify_row_node_cats = __webpack_require__(228);
-	var generate_cat_data = __webpack_require__(244);
+	var make_row_cat = __webpack_require__(191);
+	var calc_viz_params = __webpack_require__(68);
+	var resize_viz = __webpack_require__(155);
+	var modify_row_node_cats = __webpack_require__(229);
+	var generate_cat_data = __webpack_require__(245);
 
 	module.exports = function reset_cats(run_resize_viz = true) {
 
@@ -25905,7 +26066,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -26115,11 +26276,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var update_viz_with_view = __webpack_require__(209);
-	var reset_other_filter_sliders = __webpack_require__(246);
+	var update_viz_with_view = __webpack_require__(210);
+	var reset_other_filter_sliders = __webpack_require__(247);
 
 	module.exports = function update_view(cgm, filter_type, inst_state) {
 
@@ -26134,10 +26295,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_filter_title = __webpack_require__(247);
+	var make_filter_title = __webpack_require__(248);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function reset_other_filter_sliders(cgm, filter_type, inst_state) {
@@ -26187,10 +26348,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var get_filter_default_state = __webpack_require__(6);
+	var get_filter_default_state = __webpack_require__(7);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_filter_title(params, filter_type) {
@@ -26246,11 +26407,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var file_saver = __webpack_require__(249);
-	var make_matrix_string = __webpack_require__(250);
+	var file_saver = __webpack_require__(250);
+	var make_matrix_string = __webpack_require__(251);
 
 	module.exports = function save_matrix() {
 
@@ -26265,7 +26426,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports) {
 
 	module.exports = function file_saver() {
@@ -26480,10 +26641,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_full_name = __webpack_require__(251);
+	var make_full_name = __webpack_require__(252);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_matrix_string(params) {
@@ -26565,7 +26726,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports) {
 
 	module.exports = function make_full_name(params, inst_node, inst_rc) {
@@ -26596,10 +26757,10 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var deactivate_cropping = __webpack_require__(253);
+	var deactivate_cropping = __webpack_require__(254);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function brush_crop_matrix() {
@@ -26720,7 +26881,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports) {
 
 	module.exports = function deactivate_cropping(cgm) {
@@ -26731,7 +26892,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26743,7 +26904,7 @@ var Clustergrammer =
 	(function (root, factory) {
 	  if (true) {
 	    // AMD. Register as an anonymous module.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(255)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(256)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports === 'object') {
 	    if (process.browser) {
 	      // Browserify. Import css too using cssify.
@@ -27129,7 +27290,7 @@ var Clustergrammer =
 	});
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -36688,7 +36849,7 @@ var Clustergrammer =
 	}();
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports) {
 
 	/**
@@ -37137,16 +37298,16 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(258);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(260)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -37163,10 +37324,10 @@ var Clustergrammer =
 	}
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(259)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -37177,7 +37338,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports) {
 
 	/*
@@ -37233,7 +37394,7 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -37485,16 +37646,16 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(262);
+	var content = __webpack_require__(263);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(260)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -37511,10 +37672,10 @@ var Clustergrammer =
 	}
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(259)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -37525,18 +37686,18 @@ var Clustergrammer =
 
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var ini_sidebar = __webpack_require__(224);
-	var set_up_filters = __webpack_require__(264);
-	var set_up_search = __webpack_require__(269);
-	var set_up_reorder = __webpack_require__(270);
-	var set_sidebar_ini_view = __webpack_require__(271);
-	var make_icons = __webpack_require__(272);
-	var make_modals = __webpack_require__(274);
-	var set_up_opacity_slider = __webpack_require__(276);
-	var make_colorbar = __webpack_require__(277);
+	var ini_sidebar = __webpack_require__(225);
+	var set_up_filters = __webpack_require__(265);
+	var set_up_search = __webpack_require__(270);
+	var set_up_reorder = __webpack_require__(271);
+	var set_sidebar_ini_view = __webpack_require__(272);
+	var make_icons = __webpack_require__(273);
+	var make_modals = __webpack_require__(275);
+	var set_up_opacity_slider = __webpack_require__(277);
+	var make_colorbar = __webpack_require__(278);
 	var underscore = __webpack_require__(3);
 
 	/* Represents sidebar with controls.
@@ -37612,11 +37773,11 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_slider_filter = __webpack_require__(265);
-	var make_button_filter = __webpack_require__(268);
+	var make_slider_filter = __webpack_require__(266);
+	var make_button_filter = __webpack_require__(269);
 
 	module.exports = function set_up_filters(cgm, filter_type) {
 
@@ -37632,14 +37793,14 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_filter_title = __webpack_require__(247);
-	var run_filter_slider = __webpack_require__(266);
-	var get_filter_default_state = __webpack_require__(6);
-	var get_subset_views = __webpack_require__(64);
-	d3.slider = __webpack_require__(254);
+	var make_filter_title = __webpack_require__(248);
+	var run_filter_slider = __webpack_require__(267);
+	var get_filter_default_state = __webpack_require__(7);
+	var get_subset_views = __webpack_require__(65);
+	d3.slider = __webpack_require__(255);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function make_slider_filter(cgm, filter_type, div_filters) {
@@ -37710,13 +37871,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var update_viz_with_view = __webpack_require__(209);
-	var reset_other_filter_sliders = __webpack_require__(246);
-	var get_current_orders = __webpack_require__(267);
-	var make_requested_view = __webpack_require__(66);
+	var update_viz_with_view = __webpack_require__(210);
+	var reset_other_filter_sliders = __webpack_require__(247);
+	var get_current_orders = __webpack_require__(268);
+	var make_requested_view = __webpack_require__(67);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function run_filter_slider(cgm, filter_type, available_views, inst_index) {
@@ -37749,7 +37910,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
@@ -37780,11 +37941,11 @@ var Clustergrammer =
 	};
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// var update_network = require('../network/update_network');
-	var make_requested_view = __webpack_require__(66);
+	var make_requested_view = __webpack_require__(67);
 
 	module.exports = function make_button_filter(config, params, filter_type, div_filters) {
 
@@ -37831,7 +37992,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports) {
 
 	module.exports = function set_up_search(sidebar, params) {
@@ -37846,7 +38007,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// var get_cat_title = require('../categories/get_cat_title');
@@ -37938,10 +38099,10 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_filter_title = __webpack_require__(247);
+	var make_filter_title = __webpack_require__(248);
 	var underscore = __webpack_require__(3);
 
 	module.exports = function set_sidebar_ini_view(params) {
@@ -37977,13 +38138,13 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var file_saver = __webpack_require__(249);
-	var two_translate_zoom = __webpack_require__(146);
-	var deactivate_cropping = __webpack_require__(253);
-	var save_svg_png = __webpack_require__(273);
+	var file_saver = __webpack_require__(250);
+	var two_translate_zoom = __webpack_require__(147);
+	var deactivate_cropping = __webpack_require__(254);
+	var save_svg_png = __webpack_require__(274);
 
 	module.exports = function make_icons(cgm, sidebar) {
 
@@ -38092,433 +38253,382 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;(function() {
-	  var out$ = typeof exports != 'undefined' && exports || "function" != 'undefined' && {} || this;
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
+	(function () {
+	  var out$ = typeof exports != 'undefined' && exports || "function" != 'undefined' && {} || this || window;
+	  if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	    return out$;
+	  }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+	  var xmlns = 'http://www.w3.org/2000/xmlns/';
 	  var doctype = '<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY nbsp "&#160;">]>';
+	  var urlRegex = /url\(["']?(.+?)["']?\)/;
+	  var fontFormats = {
+	    woff2: 'font/woff2',
+	    woff: 'font/woff',
+	    otf: 'application/x-font-opentype',
+	    ttf: 'application/x-font-ttf',
+	    eot: 'application/vnd.ms-fontobject',
+	    sfnt: 'application/font-sfnt',
+	    svg: 'image/svg+xml'
+	  };
 
-	  function isElement(obj) {
+	  var isElement = function isElement(obj) {
 	    return obj instanceof HTMLElement || obj instanceof SVGElement;
-	  }
+	  };
+	  var requireDomNode = function requireDomNode(el) {
+	    if (!isElement(el)) throw new Error('an HTMLElement or SVGElement is required; got ' + el);
+	  };
+	  var isExternal = function isExternal(url) {
+	    return url && url.lastIndexOf('http', 0) === 0 && url.lastIndexOf(window.location.host) === -1;
+	  };
 
-	  function requireDomNode(el) {
-	    if (!isElement(el)) {
-	      throw new Error('an HTMLElement or SVGElement is required; got ' + el);
-	    }
-	  }
-
-	  function isExternal(url) {
-	    return url && url.lastIndexOf('http',0) == 0 && url.lastIndexOf(window.location.host) == -1;
-	  }
-
-	  function inlineImages(el, callback) {
-	    requireDomNode(el);
-
-	    var images = el.querySelectorAll('image'),
-	        left = images.length,
-	        checkDone = function() {
-	          if (left === 0) {
-	            callback();
-	          }
-	        };
-
-	    checkDone();
-	    for (var i = 0; i < images.length; i++) {
-	      (function(image) {
-	        var href = image.getAttributeNS("http://www.w3.org/1999/xlink", "href");
-	        if (href) {
-	          if (isExternal(href.value)) {
-	            console.warn("Cannot render embedded images linking to external hosts: "+href.value);
-	            return;
-	          }
-	        }
-	        var canvas = document.createElement('canvas');
-	        var ctx = canvas.getContext('2d');
-	        var img = new Image();
-	        img.crossOrigin="anonymous";
-	        href = href || image.getAttribute('href');
-	        if (href) {
-	          img.src = href;
-	          img.onload = function() {
-	            canvas.width = img.width;
-	            canvas.height = img.height;
-	            ctx.drawImage(img, 0, 0);
-	            image.setAttributeNS("http://www.w3.org/1999/xlink", "href", canvas.toDataURL('image/png'));
-	            left--;
-	            checkDone();
-	          }
-	          img.onerror = function() {
-	            console.log("Could not load "+href);
-	            left--;
-	            checkDone();
-	          }
-	        } else {
-	          left--;
-	          checkDone();
-	        }
-	      })(images[i]);
-	    }
-	  }
-
-	  function styles(el, options, cssLoadedCallback) {
-	    var selectorRemap = options.selectorRemap;
-	    var modifyStyle = options.modifyStyle;
-	    var css = "";
-	    // each font that has extranl link is saved into queue, and processed
-	    // asynchronously
-	    var fontsQueue = [];
-	    var sheets = document.styleSheets;
-	    for (var i = 0; i < sheets.length; i++) {
-	      try {
-	        var rules = sheets[i].cssRules;
-	      } catch (e) {
-	        console.warn("Stylesheet could not be loaded: "+sheets[i].href);
-	        continue;
-	      }
-
-	      if (rules != null) {
-	        for (var j = 0, match; j < rules.length; j++, match = null) {
-	          var rule = rules[j];
-	          if (typeof(rule.style) != "undefined") {
-	            var selectorText;
-
-	            try {
-	              selectorText = rule.selectorText;
-	            } catch(err) {
-	              console.warn('The following CSS rule has an invalid selector: "' + rule + '"', err);
-	            }
-
-	            try {
-	              if (selectorText) {
-	                match = el.querySelector(selectorText) || el.parentNode.querySelector(selectorText);
-	              }
-	            } catch(err) {
-	              console.warn('Invalid CSS selector "' + selectorText + '"', err);
-	            }
-
-	            if (match) {
-	              var selector = selectorRemap ? selectorRemap(rule.selectorText) : rule.selectorText;
-	              var cssText = modifyStyle ? modifyStyle(rule.style.cssText) : rule.style.cssText;
-	              css += selector + " { " + cssText + " }\n";
-	            } else if(rule.cssText.match(/^@font-face/)) {
-	              // below we are trying to find matches to external link. E.g.
-	              // @font-face {
-	              //   // ...
-	              //   src: local('Abel'), url(https://fonts.gstatic.com/s/abel/v6/UzN-iejR1VoXU2Oc-7LsbvesZW2xOQ-xsNqO47m55DA.woff2);
-	              // }
-	              //
-	              // This regex will save extrnal link into first capture group
-	              var fontUrlRegexp = /url\(["']?(.+?)["']?\)/;
-	              // TODO: This needs to be changed to support multiple url declarations per font.
-	              var fontUrlMatch = rule.cssText.match(fontUrlRegexp);
-
-	              var externalFontUrl = (fontUrlMatch && fontUrlMatch[1]) || '';
-	              var fontUrlIsDataURI = externalFontUrl.match(/^data:/);
-	              if (fontUrlIsDataURI) {
-	                // We should ignore data uri - they are already embedded
-	                externalFontUrl = '';
-	              }
-
-	              if (externalFontUrl) {
-	                // okay, we are lucky. We can fetch this font later
-
-	                //handle url if relative
-	                if (externalFontUrl.startsWith('../')) {
-	                  externalFontUrl = sheets[i].href + '/../' + externalFontUrl
-	                } else if (externalFontUrl.startsWith('./')) {
-	                  externalFontUrl = sheets[i].href + '/.' + externalFontUrl
-	                }
-
-	                fontsQueue.push({
-	                  text: rule.cssText,
-	                  // Pass url regex, so that once font is downladed, we can run `replace()` on it
-	                  fontUrlRegexp: fontUrlRegexp,
-	                  format: getFontMimeTypeFromUrl(externalFontUrl),
-	                  url: externalFontUrl
-	                });
-	              } else {
-	                // otherwise, use previous logic
-	                css += rule.cssText + '\n';
-	              }
-	            }
-	          }
-	        }
-	      }
-	    }
-
-	    // Now all css is processed, it's time to handle scheduled fonts
-	    processFontQueue(fontsQueue);
-
-	    function getFontMimeTypeFromUrl(fontUrl) {
-	      var supportedFormats = {
-	        'woff2': 'font/woff2',
-	        'woff': 'font/woff',
-	        'otf': 'application/x-font-opentype',
-	        'ttf': 'application/x-font-ttf',
-	        'eot': 'application/vnd.ms-fontobject',
-	        'sfnt': 'application/font-sfnt',
-	        'svg': 'image/svg+xml'
-	      };
-	      var extensions = Object.keys(supportedFormats);
-	      for (var i = 0; i < extensions.length; ++i) {
-	        var extension = extensions[i];
-	        // TODO: This is not bullet proof, it needs to handle edge cases...
-	        if (fontUrl.indexOf('.' + extension) > 0) {
-	          return supportedFormats[extension];
-	        }
-	      }
-
-	      // If you see this error message, you probably need to update code above.
-	      console.error('Unknown font format for ' + fontUrl+ '; Fonts may not be working correctly');
-	      return 'application/octet-stream';
-	    }
-
-	    function processFontQueue(queue) {
-	      if (queue.length > 0) {
-	        // load fonts one by one until we have anything in the queue:
-	        var font = queue.pop();
-	        processNext(font);
-	      } else {
-	        // no more fonts to load.
-	        cssLoadedCallback(css);
-	      }
-
-	      function processNext(font) {
-	        // TODO: This could benefit from caching.
-	        var oReq = new XMLHttpRequest();
-	        oReq.addEventListener('load', fontLoaded);
-	        oReq.addEventListener('error', transferFailed);
-	        oReq.addEventListener('abort', transferFailed);
-	        oReq.open('GET', font.url);
-	        oReq.responseType = 'arraybuffer';
-	        oReq.send();
-
-	        function fontLoaded() {
-	          // TODO: it may be also worth to wait until fonts are fully loaded before
-	          // attempting to rasterize them. (e.g. use https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet )
-	          var fontBits = oReq.response;
-	          var fontInBase64 = arrayBufferToBase64(fontBits);
-	          updateFontStyle(font, fontInBase64);
-	        }
-
-	        function transferFailed(e) {
-	          console.warn('Failed to load font from: ' + font.url);
-	          console.warn(e)
-	          css += font.text + '\n';
-	          processFontQueue();
-	        }
-
-	        function updateFontStyle(font, fontInBase64) {
-	          var dataUrl = 'url("data:' + font.format + ';base64,' + fontInBase64 + '")';
-	          css += font.text.replace(font.fontUrlRegexp, dataUrl) + '\n';
-
-	          // schedule next font download on next tick.
-	          setTimeout(function() {
-	            processFontQueue(queue)
-	          }, 0);
-	        }
-
-	      }
-	    }
-
-	    function arrayBufferToBase64(buffer) {
-	      var binary = '';
-	      var bytes = new Uint8Array(buffer);
-	      var len = bytes.byteLength;
-
-	      for (var i = 0; i < len; i++) {
-	          binary += String.fromCharCode(bytes[i]);
-	      }
-
-	      return window.btoa(binary);
-	    }
-	  }
-
-	  function getDimension(el, clone, dim) {
-	    var v = (el.viewBox && el.viewBox.baseVal && el.viewBox.baseVal[dim]) ||
-	      (clone.getAttribute(dim) !== null && !clone.getAttribute(dim).match(/%$/) && parseInt(clone.getAttribute(dim))) ||
-	      el.getBoundingClientRect()[dim] ||
-	      parseInt(clone.style[dim]) ||
-	      parseInt(window.getComputedStyle(el).getPropertyValue(dim));
-	    return (typeof v === 'undefined' || v === null || isNaN(parseFloat(v))) ? 0 : v;
-	  }
-
-	  function reEncode(data) {
-	    data = encodeURIComponent(data);
-	    data = data.replace(/%([0-9A-F]{2})/g, function(match, p1) {
-	      var c = String.fromCharCode('0x'+p1);
-	      return c === '%' ? '%25' : c;
+	  var getFontMimeTypeFromUrl = function getFontMimeTypeFromUrl(fontUrl) {
+	    var formats = Object.keys(fontFormats).filter(function (extension) {
+	      return fontUrl.indexOf('.' + extension) > 0;
+	    }).map(function (extension) {
+	      return fontFormats[extension];
 	    });
-	    return decodeURIComponent(data);
-	  }
+	    if (formats) return formats[0];
+	    console.error('Unknown font format for ' + fontUrl + '. Fonts may not be working correctly.');
+	    return 'application/octet-stream';
+	  };
 
-	  out$.prepareSvg = function(el, options, cb) {
+	  var arrayBufferToBase64 = function arrayBufferToBase64(buffer) {
+	    var binary = '';
+	    var bytes = new Uint8Array(buffer);
+	    for (var i = 0; i < bytes.byteLength; i++) {
+	      binary += String.fromCharCode(bytes[i]);
+	    }return window.btoa(binary);
+	  };
+
+	  var getDimension = function getDimension(el, clone, dim) {
+	    var v = el.viewBox && el.viewBox.baseVal && el.viewBox.baseVal[dim] || clone.getAttribute(dim) !== null && !clone.getAttribute(dim).match(/%$/) && parseInt(clone.getAttribute(dim)) || el.getBoundingClientRect()[dim] || parseInt(clone.style[dim]) || parseInt(window.getComputedStyle(el).getPropertyValue(dim));
+	    return typeof v === 'undefined' || v === null || isNaN(parseFloat(v)) ? 0 : v;
+	  };
+
+	  var getDimensions = function getDimensions(el, clone, width, height) {
+	    if (el.tagName === 'svg') return {
+	      width: width || getDimension(el, clone, 'width'),
+	      height: height || getDimension(el, clone, 'height')
+	    };else if (el.getBBox) {
+	      var _el$getBBox = el.getBBox(),
+	          x = _el$getBBox.x,
+	          y = _el$getBBox.y,
+	          _width = _el$getBBox.width,
+	          _height = _el$getBBox.height;
+
+	      return {
+	        width: x + _width,
+	        height: y + _height
+	      };
+	    }
+	  };
+
+	  var reEncode = function reEncode(data) {
+	    return decodeURIComponent(encodeURIComponent(data).replace(/%([0-9A-F]{2})/g, function (match, p1) {
+	      var c = String.fromCharCode('0x' + p1);
+	      return c === '%' ? '%25' : c;
+	    }));
+	  };
+
+	  var uriToBlob = function uriToBlob(uri) {
+	    var byteString = window.atob(uri.split(',')[1]);
+	    var mimeString = uri.split(',')[0].split(':')[1].split(';')[0];
+	    var buffer = new ArrayBuffer(byteString.length);
+	    var intArray = new Uint8Array(buffer);
+	    for (var i = 0; i < byteString.length; i++) {
+	      intArray[i] = byteString.charCodeAt(i);
+	    }
+	    return new Blob([buffer], { type: mimeString });
+	  };
+
+	  var query = function query(el, selector) {
+	    if (!selector) return;
+	    try {
+	      return el.querySelector(selector) || el.parentNode && el.parentNode.querySelector(selector);
+	    } catch (err) {
+	      console.warn('Invalid CSS selector "' + selector + '"', err);
+	    }
+	  };
+
+	  var detectCssFont = function detectCssFont(rule, href) {
+	    // Match CSS font-face rules to external links.
+	    // @font-face {
+	    //   src: local('Abel'), url(https://fonts.gstatic.com/s/abel/v6/UzN-iejR1VoXU2Oc-7LsbvesZW2xOQ-xsNqO47m55DA.woff2);
+	    // }
+	    var match = rule.cssText.match(urlRegex);
+	    var url = match && match[1] || '';
+	    if (!url || url.match(/^data:/) || url === 'about:blank') return;
+	    var fullUrl = url.startsWith('../') ? href + '/../' + url : url.startsWith('./') ? href + '/.' + url : url;
+	    return {
+	      text: rule.cssText,
+	      format: getFontMimeTypeFromUrl(fullUrl),
+	      url: fullUrl
+	    };
+	  };
+
+	  var inlineImages = function inlineImages(el) {
+	    return Promise.all(Array.from(el.querySelectorAll('image')).map(function (image) {
+	      var href = image.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || image.getAttribute('href');
+	      if (!href) return Promise.resolve(null);
+	      if (isExternal(href)) {
+	        href += (href.indexOf('?') === -1 ? '?' : '&') + 't=' + new Date().valueOf();
+	      }
+	      return new Promise(function (resolve, reject) {
+	        var canvas = document.createElement('canvas');
+	        var img = new Image();
+	        img.crossOrigin = 'anonymous';
+	        img.src = href;
+	        img.onerror = function () {
+	          return reject(new Error('Could not load ' + href));
+	        };
+	        img.onload = function () {
+	          canvas.width = img.width;
+	          canvas.height = img.height;
+	          canvas.getContext('2d').drawImage(img, 0, 0);
+	          image.setAttributeNS('http://www.w3.org/1999/xlink', 'href', canvas.toDataURL('image/png'));
+	          resolve(true);
+	        };
+	      });
+	    }));
+	  };
+
+	  var cachedFonts = {};
+	  var inlineFonts = function inlineFonts(fonts) {
+	    return Promise.all(fonts.map(function (font) {
+	      return new Promise(function (resolve, reject) {
+	        if (cachedFonts[font.url]) return resolve(cachedFonts[font.url]);
+
+	        var req = new XMLHttpRequest();
+	        req.addEventListener('load', function () {
+	          // TODO: it may also be worth it to wait until fonts are fully loaded before
+	          // attempting to rasterize them. (e.g. use https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet)
+	          var fontInBase64 = arrayBufferToBase64(req.response);
+	          var fontUri = font.text.replace(urlRegex, 'url("data:' + font.format + ';base64,' + fontInBase64 + '")') + '\n';
+	          cachedFonts[font.url] = fontUri;
+	          resolve(fontUri);
+	        });
+	        req.addEventListener('error', function (e) {
+	          console.warn('Failed to load font from: ' + font.url, e);
+	          cachedFonts[font.url] = null;
+	          resolve(null);
+	        });
+	        req.addEventListener('abort', function (e) {
+	          console.warn('Aborted loading font from: ' + font.url, e);
+	          resolve(null);
+	        });
+	        req.open('GET', font.url);
+	        req.responseType = 'arraybuffer';
+	        req.send();
+	      });
+	    })).then(function (fontCss) {
+	      return fontCss.filter(function (x) {
+	        return x;
+	      }).join('');
+	    });
+	  };
+
+	  var cachedRules = null;
+	  var styleSheetRules = function styleSheetRules() {
+	    if (cachedRules) return cachedRules;
+	    return cachedRules = Array.from(document.styleSheets).map(function (sheet) {
+	      try {
+	        return { rules: sheet.cssRules, href: sheet.href };
+	      } catch (e) {
+	        console.warn('Stylesheet could not be loaded: ' + sheet.href, e);
+	        return {};
+	      }
+	    });
+	  };
+
+	  var inlineCss = function inlineCss(el, options) {
+	    var _ref = options || {},
+	        selectorRemap = _ref.selectorRemap,
+	        modifyStyle = _ref.modifyStyle,
+	        modifyCss = _ref.modifyCss,
+	        fonts = _ref.fonts;
+
+	    var generateCss = modifyCss || function (selector, properties) {
+	      var sel = selectorRemap ? selectorRemap(selector) : selector;
+	      var props = modifyStyle ? modifyStyle(properties) : properties;
+	      return sel + '{' + props + '}\n';
+	    };
+	    var css = [];
+	    var detectFonts = typeof fonts === 'undefined';
+	    var fontList = fonts || [];
+	    styleSheetRules().forEach(function (_ref2) {
+	      var rules = _ref2.rules,
+	          href = _ref2.href;
+
+	      if (!rules) return;
+	      Array.from(rules).forEach(function (rule) {
+	        if (typeof rule.style != 'undefined') {
+	          if (query(el, rule.selectorText)) css.push(generateCss(rule.selectorText, rule.style.cssText));else if (detectFonts && rule.cssText.match(/^@font-face/)) {
+	            var font = detectCssFont(rule, href);
+	            if (font) fontList.push(font);
+	          } else css.push(rule.cssText);
+	        }
+	      });
+	    });
+
+	    return inlineFonts(fontList).then(function (fontCss) {
+	      return css.join('\n') + fontCss;
+	    });
+	  };
+
+	  out$.prepareSvg = function (el, options, done) {
 	    requireDomNode(el);
 
-	    options = options || {};
-	    options.scale = options.scale || 1;
-	    options.responsive = options.responsive || false;
-	    var xmlns = "http://www.w3.org/2000/xmlns/";
+	    var _ref3 = options || {},
+	        _ref3$left = _ref3.left,
+	        left = _ref3$left === undefined ? 0 : _ref3$left,
+	        _ref3$top = _ref3.top,
+	        top = _ref3$top === undefined ? 0 : _ref3$top,
+	        w = _ref3.width,
+	        h = _ref3.height,
+	        _ref3$scale = _ref3.scale,
+	        scale = _ref3$scale === undefined ? 1 : _ref3$scale,
+	        _ref3$responsive = _ref3.responsive,
+	        responsive = _ref3$responsive === undefined ? false : _ref3$responsive;
 
-	    inlineImages(el, function() {
-	      var outer = document.createElement("div");
+	    return inlineImages(el).then(function () {
 	      var clone = el.cloneNode(true);
-	      var width, height;
-	      if(el.tagName == 'svg') {
-	        width = options.width || getDimension(el, clone, 'width');
-	        height = options.height || getDimension(el, clone, 'height');
-	      } else if(el.getBBox) {
-	        var box = el.getBBox();
-	        width = box.x + box.width;
-	        height = box.y + box.height;
-	        clone.setAttribute('transform', clone.getAttribute('transform').replace(/translate\(.*?\)/, ''));
 
-	        var svg = document.createElementNS('http://www.w3.org/2000/svg','svg')
-	        svg.appendChild(clone)
-	        clone = svg;
-	      } else {
-	        console.error('Attempted to render non-SVG element', el);
-	        return;
+	      var _ref4 = options || {},
+	          _ref4$backgroundColor = _ref4.backgroundColor,
+	          backgroundColor = _ref4$backgroundColor === undefined ? 'transparent' : _ref4$backgroundColor;
+
+	      clone.style.backgroundColor = backgroundColor;
+
+	      var _getDimensions = getDimensions(el, clone, w, h),
+	          width = _getDimensions.width,
+	          height = _getDimensions.height;
+
+	      if (el.tagName !== 'svg') {
+	        if (el.getBBox) {
+	          clone.setAttribute('transform', clone.getAttribute('transform').replace(/translate\(.*?\)/, ''));
+	          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	          svg.appendChild(clone);
+	          clone = svg;
+	        } else {
+	          console.error('Attempted to render non-SVG element', el);
+	          return;
+	        }
 	      }
 
-	      clone.setAttribute("version", "1.1");
-	      if (!clone.getAttribute('xmlns')) {
-	        clone.setAttributeNS(xmlns, "xmlns", "http://www.w3.org/2000/svg");
-	      }
-	      if (!clone.getAttribute('xmlns:xlink')) {
-	        clone.setAttributeNS(xmlns, "xmlns:xlink", "http://www.w3.org/1999/xlink");
-	      }
+	      clone.setAttribute('version', '1.1');
+	      clone.setAttribute('viewBox', [left, top, width, height].join(' '));
+	      if (!clone.getAttribute('xmlns')) clone.setAttributeNS(xmlns, 'xmlns', 'http://www.w3.org/2000/svg');
+	      if (!clone.getAttribute('xmlns:xlink')) clone.setAttributeNS(xmlns, 'xmlns:xlink', 'http://www.w3.org/1999/xlink');
 
-	      if (options.responsive) {
+	      if (responsive) {
 	        clone.removeAttribute('width');
 	        clone.removeAttribute('height');
 	        clone.setAttribute('preserveAspectRatio', 'xMinYMin meet');
 	      } else {
-	        clone.setAttribute("width", width * options.scale);
-	        clone.setAttribute("height", height * options.scale);
+	        clone.setAttribute('width', width * scale);
+	        clone.setAttribute('height', height * scale);
 	      }
 
-	      clone.setAttribute("viewBox", [
-	        options.left || 0,
-	        options.top || 0,
-	        width,
-	        height
-	      ].join(" "));
+	      Array.from(clone.querySelectorAll('foreignObject > *')).forEach(function (foreignObject) {
+	        if (!foreignObject.getAttribute('xmlns')) foreignObject.setAttributeNS(xmlns, 'xmlns', 'http://www.w3.org/1999/xhtml');
+	      });
 
-	      var fos = clone.querySelectorAll('foreignObject > *');
-	      for (var i = 0; i < fos.length; i++) {
-	        if (!fos[i].getAttribute('xmlns')) {
-	          fos[i].setAttributeNS(xmlns, "xmlns", "http://www.w3.org/1999/xhtml");
-	        }
-	      }
+	      return inlineCss(el, options).then(function (css) {
+	        var style = document.createElement('style');
+	        style.setAttribute('type', 'text/css');
+	        style.innerHTML = '<![CDATA[\n' + css + '\n]]>';
 
-	      outer.appendChild(clone);
-
-	      // In case of custom fonts we need to fetch font first, and then inline
-	      // its url into data-uri format (encode as base64). That's why style
-	      // processing is done asynchonously. Once all inlining is finshed
-	      // cssLoadedCallback() is called.
-	      styles(el, options, cssLoadedCallback);
-
-	      function cssLoadedCallback(css) {
-	        // here all fonts are inlined, so that we can render them properly.
-	        var s = document.createElement('style');
-	        s.setAttribute('type', 'text/css');
-	        s.innerHTML = "<![CDATA[\n" + css + "\n]]>";
 	        var defs = document.createElement('defs');
-	        defs.appendChild(s);
+	        defs.appendChild(style);
 	        clone.insertBefore(defs, clone.firstChild);
 
-	        if (cb) {
-	          var outHtml = outer.innerHTML;
-	          outHtml = outHtml.replace(/NS\d+:href/gi, 'xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href');
-	          cb(outHtml, width, height);
-	        }
-	      }
-	    });
-	  }
+	        var outer = document.createElement('div');
+	        outer.appendChild(clone);
+	        var src = outer.innerHTML.replace(/NS\d+:href/gi, 'xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href');
 
-	  out$.svgAsDataUri = function(el, options, cb) {
-	    out$.prepareSvg(el, options, function(svg) {
-	      var uri = 'data:image/svg+xml;base64,' + window.btoa(reEncode(doctype + svg));
-	      if (cb) {
-	        cb(uri);
-	      }
+	        if (typeof done === 'function') done(src, width, height);else return { src: src, width: width, height: height };
+	      });
 	    });
-	  }
+	  };
 
-	  out$.svgAsPngUri = function(el, options, cb) {
+	  out$.svgAsDataUri = function (el, options, done) {
+	    requireDomNode(el);
+	    var result = out$.prepareSvg(el, options).then(function (_ref5) {
+	      var src = _ref5.src;
+	      return 'data:image/svg+xml;base64,' + window.btoa(reEncode(doctype + src));
+	    });
+	    if (typeof done === 'function') return result.then(done);
+	    return result;
+	  };
+
+	  out$.svgAsPngUri = function (el, options, done) {
 	    requireDomNode(el);
 
-	    options = options || {};
-	    options.encoderType = options.encoderType || 'image/png';
-	    options.encoderOptions = options.encoderOptions || 0.8;
+	    var _ref6 = options || {},
+	        _ref6$encoderType = _ref6.encoderType,
+	        encoderType = _ref6$encoderType === undefined ? 'image/png' : _ref6$encoderType,
+	        _ref6$encoderOptions = _ref6.encoderOptions,
+	        encoderOptions = _ref6$encoderOptions === undefined ? 0.8 : _ref6$encoderOptions,
+	        canvg = _ref6.canvg;
 
-	    var convertToPng = function(src, w, h) {
+	    var convertToPng = function convertToPng(_ref7) {
+	      var src = _ref7.src,
+	          width = _ref7.width,
+	          height = _ref7.height;
+
 	      var canvas = document.createElement('canvas');
 	      var context = canvas.getContext('2d');
-	      canvas.width = w;
-	      canvas.height = h;
+	      var pixelRatio = window.devicePixelRatio || 1;
 
-	      if(options.canvg) {
-	        options.canvg(canvas, src);
-	      } else {
-	        context.drawImage(src, 0, 0);
-	      }
+	      canvas.width = width * pixelRatio;
+	      canvas.height = height * pixelRatio;
+	      canvas.style.width = canvas.width + 'px';
+	      canvas.style.height = canvas.height + 'px';
+	      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-	      if(options.backgroundColor){
-	        context.globalCompositeOperation = 'destination-over';
-	        context.fillStyle = options.backgroundColor;
-	        context.fillRect(0, 0, canvas.width, canvas.height);
-	      }
+	      if (canvg) canvg(canvas, src);else context.drawImage(src, 0, 0);
 
-	      var png;
+	      var png = void 0;
 	      try {
-	        png = canvas.toDataURL(options.encoderType, options.encoderOptions);
+	        png = canvas.toDataURL(encoderType, encoderOptions);
 	      } catch (e) {
-	        if ((typeof SecurityError !== 'undefined' && e instanceof SecurityError) || e.name == "SecurityError") {
-	          console.error("Rendered SVG images cannot be downloaded in this browser.");
+	        if (typeof SecurityError !== 'undefined' && e instanceof SecurityError || e.name === 'SecurityError') {
+	          console.error('Rendered SVG images cannot be downloaded in this browser.');
 	          return;
-	        } else {
-	          throw e;
-	        }
+	        } else throw e;
 	      }
-	      cb(png);
-	    }
+	      if (typeof done === 'function') done(png);
+	      return Promise.resolve(png);
+	    };
 
-	    if(options.canvg) {
-	      out$.prepareSvg(el, options, convertToPng);
-	    } else {
-	      out$.svgAsDataUri(el, options, function(uri) {
+	    if (canvg) return out$.prepareSvg(el, options).then(convertToPng);else return out$.svgAsDataUri(el, options).then(function (uri) {
+	      return new Promise(function (resolve, reject) {
 	        var image = new Image();
-
-	        image.onload = function() {
-	          convertToPng(image, image.width, image.height);
-	        }
-
-	        image.onerror = function() {
-	          console.error(
-	            'There was an error loading the data URI as an image on the following SVG\n',
-	            window.atob(uri.slice(26)), '\n',
-	            "Open the following link to see browser's diagnosis\n",
-	            uri);
-	        }
-
+	        image.onload = function () {
+	          return resolve(convertToPng({
+	            src: image,
+	            width: image.width,
+	            height: image.height
+	          }));
+	        };
+	        image.onerror = function () {
+	          reject('There was an error loading the data URI as an image on the following SVG\n' + window.atob(uri.slice(26)) + 'Open the following link to see browser\'s diagnosis\n' + uri);
+	        };
 	        image.src = uri;
 	      });
-	    }
-	  }
+	    });
+	  };
 
-	  out$.download = function(name, uri) {
-	    if (navigator.msSaveOrOpenBlob) {
-	      navigator.msSaveOrOpenBlob(uriToBlob(uri), name);
-	    } else {
+	  out$.download = function (name, uri) {
+	    if (navigator.msSaveOrOpenBlob) navigator.msSaveOrOpenBlob(uriToBlob(uri), name);else {
 	      var saveLink = document.createElement('a');
-	      var downloadSupported = 'download' in saveLink;
-	      if (downloadSupported) {
+	      if ('download' in saveLink) {
 	        saveLink.download = name;
 	        saveLink.style.display = 'none';
 	        document.body.appendChild(saveLink);
@@ -38526,10 +38636,10 @@ var Clustergrammer =
 	          var blob = uriToBlob(uri);
 	          var url = URL.createObjectURL(blob);
 	          saveLink.href = url;
-	          saveLink.onclick = function() {
-	            requestAnimationFrame(function() {
-	              URL.revokeObjectURL(url);
-	            })
+	          saveLink.onclick = function () {
+	            return requestAnimationFrame(function () {
+	              return URL.revokeObjectURL(url);
+	            });
 	          };
 	        } catch (e) {
 	          console.warn('This browser does not support object URLs. Falling back to string URL.');
@@ -38537,57 +38647,32 @@ var Clustergrammer =
 	        }
 	        saveLink.click();
 	        document.body.removeChild(saveLink);
-	      }
-	      else {
+	      } else {
 	        window.open(uri, '_temp', 'menubar=no,toolbar=no,status=no');
 	      }
 	    }
-	  }
+	  };
 
-	  function uriToBlob(uri) {
-	    var byteString = window.atob(uri.split(',')[1]);
-	    var mimeString = uri.split(',')[0].split(':')[1].split(';')[0]
-	    var buffer = new ArrayBuffer(byteString.length);
-	    var intArray = new Uint8Array(buffer);
-	    for (var i = 0; i < byteString.length; i++) {
-	      intArray[i] = byteString.charCodeAt(i);
-	    }
-	    return new Blob([buffer], {type: mimeString});
-	  }
-
-	  out$.saveSvg = function(el, name, options) {
+	  out$.saveSvg = function (el, name, options) {
 	    requireDomNode(el);
-
-	    options = options || {};
-	    out$.svgAsDataUri(el, options, function(uri) {
-	      out$.download(name, uri);
+	    out$.svgAsDataUri(el, options || {}, function (uri) {
+	      return out$.download(name, uri);
 	    });
-	  }
+	  };
 
-	  out$.saveSvgAsPng = function(el, name, options) {
+	  out$.saveSvgAsPng = function (el, name, options) {
 	    requireDomNode(el);
-
-	    options = options || {};
-	    out$.svgAsPngUri(el, options, function(uri) {
-	      out$.download(name, uri);
+	    out$.svgAsPngUri(el, options || {}, function (uri) {
+	      return out$.download(name, uri);
 	    });
-	  }
-
-	  // if define is defined create as an AMD module
-	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
-	      return out$;
-	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  }
-
+	  };
 	})();
 
-
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var make_modal_skeleton = __webpack_require__(275);
+	var make_modal_skeleton = __webpack_require__(276);
 
 	module.exports = function ini_modals(params) {
 
@@ -38621,7 +38706,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports) {
 
 	module.exports = function make_modal_skeleton(params, modal_class) {
@@ -38644,7 +38729,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports) {
 
 	module.exports = function set_up_opacity_slider(sidebar) {
@@ -38657,7 +38742,7 @@ var Clustergrammer =
 		};
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var underscore = __webpack_require__(3);
